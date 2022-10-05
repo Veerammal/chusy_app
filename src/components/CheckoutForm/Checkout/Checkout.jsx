@@ -33,7 +33,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
       generateToken();
     }
-  }, [cart]);
+  }, [activeStep, cart, history]);
 
   const test = (data) => {
     setShippingData(data);

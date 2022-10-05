@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Navbar, Products, Cart } from './components';
 import { commerce } from './lib/commerce';
@@ -8,10 +8,10 @@ import { commerce } from './lib/commerce';
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({ });
+  const [cart, setCart] = useState({});
   // const [order, setOrder] = useState({});
   // const [errorMessage, setErrorMessage] = useState('');
-  const history = useHistory();
+  // const history = useHistory();
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -48,7 +48,6 @@ const App = () => {
     console.log("Product removed from the cart successfully");
     console.log(response);
     setCart(response.cart);
-    // window.location.reload();
   };
 
   const handleEmptyCart = async () => {
@@ -56,9 +55,6 @@ const App = () => {
     console.log("Cart emptied successfully");
     console.log(response);
     setCart(response.cart);
-    fetchProducts();
-    fetchCart();
-    history.push('/');
   };
 
   // const refreshCart = async () => {
@@ -80,11 +76,15 @@ const App = () => {
   //   }
   // };
 
-  useEffect(() => {
-    console.log("Product and cart are going to be fetched");
+   useEffect(() => {
+    console.log("Product is going to be fetched");
     fetchProducts();
-    fetchCart();
   }, []);
+
+  useEffect(() => {
+    console.log("Cart is going to be fetched");
+    fetchCart();
+  }, [cart]);
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
@@ -92,7 +92,7 @@ const App = () => {
     <Router>
       <div style={{ display: 'flex' }}>
         <CssBaseline />
-        <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
+        <Navbar totalItems={cart ? cart.total_items : ""} handleDrawerToggle={handleDrawerToggle} />
         <Switch>
           <Route exact path="/">
             <Products products={products} onAddToCart={handleAddToCart} />

@@ -16,7 +16,15 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
     </Typography>
   );
 
-  if (!cart.line_items) return (<h1>Loading</h1>);
+  const renderLoading = () => (
+    <Typography variant="h1">
+      Loading...
+    </Typography>
+  );
+
+  console.log("We are inside cart");
+  console.log(cart);
+  if (cart ? !cart.line_items : false) return (<h1>Loading</h1>);
 
   const renderCart = () => (
     <>
@@ -41,7 +49,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
     <Container>
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
-      { !cart.line_items.length ? renderEmptyCart() : renderCart() }
+      { cart ? (!cart.line_items.length ? renderEmptyCart() : renderCart()) : renderLoading()}
     </Container>
   );
 };
