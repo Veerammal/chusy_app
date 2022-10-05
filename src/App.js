@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
 
 import { Navbar, Products, Cart } from './components';
 import { commerce } from './lib/commerce';
@@ -11,7 +11,7 @@ const App = () => {
   const [cart, setCart] = useState({ });
   // const [order, setOrder] = useState({});
   // const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -32,7 +32,7 @@ const App = () => {
     console.log("Product added to the cart successfully");
     console.log(item);
     setCart(item.cart);
-    window.location.reload();
+ 
   };
 
   const handleUpdateCartQty = async (lineItemId, quantity) => {
@@ -40,7 +40,7 @@ const App = () => {
     console.log("Product updated to the cart successfully");
     console.log(response);
     setCart(response.cart);
-    window.location.reload();
+ 
   };
 
   const handleRemoveFromCart = async (lineItemId) => {
@@ -48,7 +48,7 @@ const App = () => {
     console.log("Product removed from the cart successfully");
     console.log(response);
     setCart(response.cart);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleEmptyCart = async () => {
@@ -56,7 +56,9 @@ const App = () => {
     console.log("Cart emptied successfully");
     console.log(response);
     setCart(response.cart);
-    navigate('/');
+    fetchProducts();
+    fetchCart();
+    history.push('/');
   };
 
   // const refreshCart = async () => {
