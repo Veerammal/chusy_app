@@ -25,7 +25,7 @@ const Product = ({ product, onAddToCart }) => {
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-          <AddShoppingCart />
+          <AddShoppingCart /> Add to Cart
         </IconButton>
       </CardActions>
     </Card>
