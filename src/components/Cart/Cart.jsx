@@ -16,15 +16,31 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const showCartDetails = () => {
     console.log("Ordering product details are displaying here");
     console.log(cart);
-    setOrderUrl("*CHUSY%20ONLINE%20ORDER*%0A____________________________%0A%0A%0A*Total%20Order%3A*%20" 
+    var prods = "";
+    for(let i = 0; i < cart.line_items.length; i++) {
+      prods += "%0A*Product%20Name%3A*%20" + 
+    cart.line_items[i].name 
+    + "%0A*Product%20Image%20URL%3A*%20" 
+    + cart.line_items[i].image.url 
+    + "%0A*Product%20Quantity%3A*%20" + 
+    cart.line_items[i].quantity 
+    + "%0A*Product%20Price%3A*%20"
+    + cart.line_items[i].price.formatted_with_symbol
+    +  "%0A*Total%20Price%3A*%20"
+    + cart.line_items[i].line_total.formatted_with_symbol
+    + "%0A-----------------------------";
+    }
+    console.log(prods);
+
+    setOrderUrl("*CHUSY%20ONLINE%20ORDER*%0A____________________________"
+    + prods 
+    + "%0A%0A%0A*Total%20Order%3A*%20" 
     + cart.total_items 
     + "%0A*Products%20Count%3A*%20" 
     + cart.total_unique_items 
     + "%0A*Total%20Amount%3A*%20" 
-    + cart.subtotal.formatted_with_symbol 
-    + "%0A%0A-----------------------------%0A*" + 
-    "Product%20Name%3A*%20" + 
-    "line_items%5Bi%5D.name%0A*Product%20Image%20URL%3A*%20line_items%5Bi%5D.image.url%0A*Product%20Quantity%3A*%20line_items%5Bi%5D.quantity%0A*Product%20Price%3A*%20line_items%5Bi%5D.price.formatted_with_symbol%0A*Total%20Price%3A*%20line_items%5Bi%5D.line_total.formatted_with_symbol%0A-----------------------------");
+    + cart.subtotal.formatted_with_symbol );
+   console.log(orderUrl);
   };
 
   const renderEmptyCart = () => (
@@ -57,7 +73,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
         <div>
           <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
           {/* <Button class1Name={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button> */}
-          <Button className={classes.checkoutButton}  href={"http://Wa.me/919360234777?text=" + orderUrl} size="large" type="button" variant="contained" color="primary" onClick={showCartDetails}>Place Order</Button>
+          <Button className={classes.checkoutButton}  href={"http://Wa.me/916369119553?text=" + orderUrl} size="large" type="button" variant="contained" color="primary" onClick={showCartDetails}>Place Order</Button>
           {/* href="http://Wa.me/919360234777?text=*CHUSY%20ONLINE%20ORDER*%0A____________________________%0A%0A%0A*Total%20Order%3A*%20total_items%0A*Products%20Count%3A*%20total_unique_items%0A*Total%20Amount%3A*%20subtotal.formatted_with_symbol%0A%0A-----------------------------%0A*Product%20Name%3A*%20line_items%5Bi%5D.name%0A*Product%20Image%20URL%3A*%20line_items%5Bi%5D.image.url%0A*Product%20Quantity%3A*%20line_items%5Bi%5D.quantity%0A*Product%20Price%3A*%20line_items%5Bi%5D.price.formatted_with_symbol%0A*Total%20Price%3A*%20line_items%5Bi%5D.line_total.formatted_with_symbol%0A-----------------------------" */}
         </div>
       </div>
