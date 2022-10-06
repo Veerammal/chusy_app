@@ -3,16 +3,19 @@ import Grid from '@material-ui/core/Grid';
 
 import Product from './Product/Product';
 import useStyles from './styles';
+import Spinner from '../Spinner/Spinner';
 
 const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
 
-  if (!products.length) return(<p>Products Loading...</p>);
+  if (!products.length) return(<Spinner />);
 
   return (
+    <>
+    
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <Grid container justifyContent="center" spacing={4}>
+      <Grid container justifyContent="center" spacing={4} >
         {products.map((product) => (
           <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
             <Product product={product} onAddToCart={onAddToCart} />
@@ -20,6 +23,7 @@ const Products = ({ products, onAddToCart }) => {
         ))}
       </Grid>
     </main>
+    </>
   );
 };
 
