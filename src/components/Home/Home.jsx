@@ -4,12 +4,11 @@ import {
   Card,
   CardContent,
   Divider,
-  Container,
   Paper,
 } from "@material-ui/core";
 
 import React from "react";
-import Bag from "../../assets/bag.png";
+// import Bag from "../../assets/bag.png";
 
 const Home = () => {
   return (
@@ -19,16 +18,17 @@ const Home = () => {
           display: "flex",
           justifyContent: "center",
           p: 10,
-          m: 1,
-          borderRadius: 1,
         }}
       >
-        <Card>
+        <Card elevation={15}
+        style={{
+          borderRadius: 35,
+        }}>
           <CardContent>
-            <Container>
+            
               <Typography
                 component="h1"
-                variant="h2"
+                variant="h3"
                 align="center"
                 color="textPrimary"
                 gutterBottom
@@ -36,7 +36,7 @@ const Home = () => {
                 Chusy
               </Typography>
               <Typography
-                variant="h5"
+                variant="h6"
                 align="center"
                 color="textSecondary"
                 paragraph
@@ -44,8 +44,8 @@ const Home = () => {
                 Welcome to Our New Online Store for All Women and Girls as
                 Chusy!.
               </Typography>
-            </Container>
-            <Typography gutterBottom variant="h5" component="h2" align="center">
+            
+            <Typography gutterBottom variant="h6" component="h2" align="center">
               Chusy
             </Typography>
           </CardContent>
@@ -55,6 +55,8 @@ const Home = () => {
       <Divider />
       {/* -----------Product Category------------ */}
 
+
+      {/* https://mui.com/material-ui/react-button/ */}
       <Box
         sx={{
           display: "flex",
@@ -75,24 +77,15 @@ const Home = () => {
             </Typography>
           </CardContent>
         </Card> */}
-        <Paper
-          elevation='20'
-          style={{
-            backgroundImage: `url(${Bag})`,
-            backgroundRepeat:"no-repeat",
-            backgroundSize:"cover",
-            width:100,
-            height: 100,
-          }}
-        >
+        <Paper>
           <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                Tops and Chudithars
-              </Typography>
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            Tops and Chudithars
+          </Typography>
         </Paper>
         <Card>
           <CardContent>
@@ -126,18 +119,6 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
-      <Paper
-          style={{
-            backgroundImage: `url(${Bag})`,
-            borderImageWidth: '80px',
-            width: '100px',
-            height: '100px',
-            color: 'black',
-          }}
-        >
-          Some text to fill the Paper Component
-        </Paper>
-        <img src="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/bag.png" alt="Bag"/>
     </>
   );
 };
