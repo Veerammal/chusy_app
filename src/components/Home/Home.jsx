@@ -73,7 +73,7 @@ const Home = () => {
                 <CardMedia
         component="img"
         height="194"
-        image=""
+        image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/tops.png"
         alt="Tops"
       />
                 <CardContent
@@ -110,6 +110,12 @@ const Home = () => {
                   // m: 3,
                 }}
               >
+                <CardMedia
+        component="img"
+        height="194"
+        image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/chudis.png"
+        alt="Chudis"
+      />
                 <CardContent
                   sx={{
                     // padding: 10,
@@ -143,6 +149,12 @@ const Home = () => {
                   // m: 3,
                 }}
               >
+                <CardMedia
+        component="img"
+        height="194"
+        image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/blouse.png"
+        alt="Blouse"
+      />
                 <CardContent
                   sx={{
                     // padding: 10,
@@ -174,6 +186,12 @@ const Home = () => {
                   // m: 3,
                 }}
               >
+                <CardMedia
+        component="img"
+        height="194"
+        image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/pants.png"
+        alt="Pants"
+      />
                 <CardContent
                   sx={{
                     // padding: 10,
@@ -205,6 +223,12 @@ const Home = () => {
                   // m: 3,
                 }}
               >
+                <CardMedia
+        component="img"
+        height="194"
+        image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/other.png"
+        alt="Others"
+      />
                 <CardContent
                   sx={{
                     // padding: 10,
