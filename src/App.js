@@ -6,7 +6,7 @@ import { Navbar, Products, Cart, Home } from "./components";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
 
@@ -76,6 +76,7 @@ const App = () => {
 
   return (
     <Router>
+<<<<<<< Updated upstream
       <CssBaseline />
       <Navbar
         totalItems={cart ? cart.total_items : ""}
@@ -99,6 +100,23 @@ const App = () => {
           />
         </Route>
       </Switch>
+=======
+      <div style={{ display: 'flex' }}>
+        <CssBaseline />
+        <Navbar totalItems={cart ? cart.total_items : "0"} handleDrawerToggle={handleDrawerToggle} />
+        <Switch>
+          <Route exact path="/">
+            <Products products={products} onAddToCart={handleAddToCart} />
+          </Route>
+          <Route exact path="/cart">
+            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
+          </Route>
+          {/* <Route path="/checkout" exact>
+            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+          </Route> */}
+        </Switch>
+      </div>
+>>>>>>> Stashed changes
     </Router>
   );
 };
