@@ -75,11 +75,12 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
             <Button
               style={{
                 color: "#000000",
+                backgroundColor: "gold"
               }}
               component={Link}
               to="/"
             >
-              Shopping &nbsp; <ShoppingCart />
+              Go to Shopping &nbsp; <ShoppingCart />
             </Button>
           </Grid>
         </Grid>

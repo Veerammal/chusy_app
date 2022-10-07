@@ -9,15 +9,13 @@ const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
-  // const [order, setOrder] = useState({});
-  // const [errorMessage, setErrorMessage] = useState('');
-  // const history = useHistory();
 
   const fetchProducts = async () => {
-    // const { data } = await commerce.products.list();
     const response = await commerce.products.list();
     console.log("Products fetched from commercejsapi");
     console.log(response);
+    const categories = await commerce.categories.list();
+    console.log(categories);
     setProducts((response && response.data) || []);
     console.log(response.data);
   };
@@ -64,22 +62,9 @@ const App = () => {
   //   setCart(newCart);
   // };
 
-  // const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
-  //   try {
-  //     const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
-
-  //     setOrder(incomingOrder);
-
-  //     refreshCart();
-  //   } catch (error) {
-  //     setErrorMessage(error.data.error.message);
-  //   }
-  // };
-
   useEffect(() => {
     console.log("Product is going to be fetched");
     fetchProducts();
-
   }, []);
 
   useEffect(() => {
@@ -91,32 +76,29 @@ const App = () => {
 
   return (
     <Router>
-      {/* <div style={{ display: "flex" }}> */}
-        <CssBaseline />
-        <Navbar
-          totalItems={cart ? cart.total_items : ""}
-          handleDrawerToggle={handleDrawerToggle}
-        />
-        <Switch>
-          <Route exact path="/">
-            <Products products={products} onAddToCart={handleAddToCart} />
-          </Route>
-          <Route exact path="/cart">
-            <Cart
-              cart={cart}
-              onUpdateCartQty={handleUpdateCartQty}
-              onRemoveFromCart={handleRemoveFromCart}
-              onEmptyCart={handleEmptyCart}
-            />
-          </Route>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          {/* <Route path="/checkout" exact>
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route> */}
-        </Switch>
-      {/* </div> */}
+      <CssBaseline />
+      <Navbar
+        totalItems={cart ? cart.total_items : ""}
+        handleDrawerToggle={handleDrawerToggle}
+      />
+      <Switch>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+
+        <Route exact path="/">
+          <Products products={products} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/cart">
+          <Cart
+            cart={cart}
+            onUpdateCartQty={handleUpdateCartQty}
+            onRemoveFromCart={handleRemoveFromCart}
+            onEmptyCart={handleEmptyCart}
+          />
+        </Route>
+      </Switch>
     </Router>
   );
 };
