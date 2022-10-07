@@ -76,11 +76,23 @@ const Home = () => {
           </CardContent>
         </Card> */}
         <Paper
+          elevation='20'
           style={{
             backgroundImage: `url(${Bag})`,
+            backgroundRepeat:"no-repeat",
+            backgroundSize:"cover",
+            width:100,
+            height: 100,
           }}
         >
-          Some text to fill the Paper Component
+          <Typography
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Tops and Chudithars
+              </Typography>
         </Paper>
         <Card>
           <CardContent>
