@@ -8,7 +8,7 @@ import {
   Menu,
   Typography,
 } from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
+import { ShoppingCart, Store } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/commerce.png";
@@ -75,6 +75,20 @@ const PrimarySearchAppBar = ({ totalItems }) => {
             Chusy
           </Typography>
           <div className={classes.grow} />
+          {location.pathname === "/home" && (
+            <div className={classes.button}>
+            <IconButton
+              component={Link}
+              to="/"
+              aria-label="shopping"
+              color="inherit"
+            >
+              
+                <Store htmlColor="orange"/>
+              
+            </IconButton>
+          </div>
+          )}
           {location.pathname === "/" && (
             <div className={classes.button}>
               <IconButton
