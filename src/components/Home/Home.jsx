@@ -125,7 +125,7 @@ const Home = () => {
         >
           Some text to fill the Paper Component
         </Paper>
-        <img src="https://drive.google.com/file/d/181NVDdjGKFRjMZopqTlXKEcSzqIl9WGl/view" alt="Bag"/>
+        <img src="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/bag.png" alt="Bag"/>
     </>
   );
 };
