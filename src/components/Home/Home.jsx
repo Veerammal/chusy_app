@@ -1,6 +1,15 @@
-import { Typography, Box, Card, CardContent,Divider, Container } from "@material-ui/core";
+import {
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Container,
+  Paper,
+} from "@material-ui/core";
 
 import React from "react";
+import Bag from "../../assets/bag.png";
 
 const Home = () => {
   return (
@@ -24,7 +33,7 @@ const Home = () => {
                 color="textPrimary"
                 gutterBottom
               >
-               Chusy
+                Chusy
               </Typography>
               <Typography
                 variant="h5"
@@ -32,8 +41,8 @@ const Home = () => {
                 color="textSecondary"
                 paragraph
               >
-                Welcome to Our New Online Store for All
-                Women and Girls as Chusy!.
+                Welcome to Our New Online Store for All Women and Girls as
+                Chusy!.
               </Typography>
             </Container>
             <Typography gutterBottom variant="h5" component="h2" align="center">
@@ -43,7 +52,7 @@ const Home = () => {
         </Card>
       </Box>
 
-<Divider />
+      <Divider />
       {/* -----------Product Category------------ */}
 
       <Box
@@ -52,11 +61,11 @@ const Home = () => {
           justifyContent: "space-around",
           p: 1,
           m: 1,
-          bgcolor: "background.paper",
-          borderRadius: 1,
+          // bgcolor: "background.paper",
+          // borderRadius: 1,
         }}
       >
-        <Card>
+        {/* <Card>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               Tops and Chudithar
@@ -65,8 +74,14 @@ const Home = () => {
               Tops and Chudithaar for All Girls
             </Typography>
           </CardContent>
-        </Card>
-
+        </Card> */}
+        <Paper
+          style={{
+            backgroundImage: `url(${Bag})`,
+          }}
+        >
+          Some text to fill the Paper Component
+        </Paper>
         <Card>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -99,6 +114,18 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
+      <Paper
+          style={{
+            backgroundImage: `url(${Bag})`,
+            borderImageWidth: '80px',
+            width: '100px',
+            height: '100px',
+            color: 'black',
+          }}
+        >
+          Some text to fill the Paper Component
+        </Paper>
+        <img src="https://drive.google.com/file/d/181NVDdjGKFRjMZopqTlXKEcSzqIl9WGl/view" alt="Bag"/>
     </>
   );
 };
