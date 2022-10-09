@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
   IconButton,
   Badge,
-  MenuItem,
-  Menu,
+  // MenuItem,
+  // Menu,
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart, Store } from "@material-ui/icons";
@@ -15,45 +15,45 @@ import logo from "../../assets/commerce.png";
 import useStyles from "./styles";
 
 const PrimarySearchAppBar = ({ totalItems }) => {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
   const location = useLocation();
 
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  // const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
+  // const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  // const mobileMenuId = "primary-search-account-menu-mobile";
 
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton
-          component={Link}
-          to="/cart"
-          aria-label="Show cart items"
-          color="inherit"
-        >
-          <Badge
-            badgeContent={totalItems}
-            overlap="rectangular"
-            color="secondary"
-          >
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
-        <p>Cart</p>
-      </MenuItem>
-    </Menu>
-  );
+  // const renderMobileMenu = (
+  //   <Menu
+  //     anchorEl={mobileMoreAnchorEl}
+  //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
+  //     id={mobileMenuId}
+  //     keepMounted
+  //     transformOrigin={{ vertical: "top", horizontal: "right" }}
+  //     open={isMobileMenuOpen}
+  //     onClose={handleMobileMenuClose}
+  //   >
+  //     <MenuItem>
+  //       <IconButton
+  //         component={Link}
+  //         to="/cart"
+  //         aria-label="Show cart items"
+  //         color="inherit"
+  //       >
+  //         <Badge
+  //           badgeContent={totalItems}
+  //           overlap="rectangular"
+  //           color="secondary"
+  //         >
+  //           <ShoppingCart />
+  //         </Badge>
+  //       </IconButton>
+  //       <p>Cart</p>
+  //     </MenuItem>
+  //   </Menu>
+  // );
 
   return (
     <>
@@ -109,7 +109,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           )}
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
+      {/* {renderMobileMenu} */}
     </>
   );
 };

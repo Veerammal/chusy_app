@@ -13,8 +13,6 @@ const Footer = () => {
       justifyContent: 'center',
       alignItems: 'center',
       fontSize: '20px',
-      background: 'grey',
-      color: 'white'  
     }}>
       <p>
         All &copy; copy rights are reserved to Mangai Matching - (Smashers) {fullYear}

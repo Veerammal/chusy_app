@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Navbar, Products, Cart, Home } from "./components";
+import { Navbar, Products, Cart, Home, Footer } from "./components";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  // const [mobileOpen, setMobileOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
 
@@ -72,21 +72,21 @@ const App = () => {
     fetchCart();
   }, [cart]);
 
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  // const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   return (
     <Router>
       <CssBaseline />
       <Navbar
         totalItems={cart ? cart.total_items : ""}
-        handleDrawerToggle={handleDrawerToggle}
+        // handleDrawerToggle={handleDrawerToggle}
       />
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Home />
         </Route>
 
-        <Route exact path="/">
+        <Route exact path="/shop">
           <Products products={products} onAddToCart={handleAddToCart} />
         </Route>
 
@@ -98,7 +98,13 @@ const App = () => {
             onEmptyCart={handleEmptyCart}
           />
         </Route>
+
+        <Route exact path="/view/:id">
+          <Products products={products} onAddToCart={handleAddToCart} />
+        </Route> 
+        
       </Switch>
+      <Footer />
     </Router>
   );
 };
