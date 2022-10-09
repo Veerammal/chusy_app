@@ -125,8 +125,7 @@ const App = () => {
 
         <Route exact path="/view/:id">
           <View onAddToCart={handleAddToCart} />
-        </Route> 
-        
+        </Route>
       </Switch>
       <Footer />
     </Router>

@@ -75,7 +75,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
             <Button
               style={{
                 color: "#000000",
-                backgroundColor: "gold"
+                backgroundColor: "gold",
               }}
               component={Link}
               to="/shop"
@@ -132,7 +132,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
             color="primary"
             onClick={showCartDetails}
           >
-            Place Order <ShoppingBasket/>
+            Place Order <ShoppingBasket />
           </Button>
           {/* href="http://Wa.me/919360234777?text=*CHUSY%20ONLINE%20ORDER*%0A____________________________%0A%0A%0A*Total%20Order%3A*%20total_items%0A*Products%20Count%3A*%20total_unique_items%0A*Total%20Amount%3A*%20subtotal.formatted_with_symbol%0A%0A-----------------------------%0A*Product%20Name%3A*%20line_items%5Bi%5D.name%0A*Product%20Image%20URL%3A*%20line_items%5Bi%5D.image.url%0A*Product%20Quantity%3A*%20line_items%5Bi%5D.quantity%0A*Product%20Price%3A*%20line_items%5Bi%5D.price.formatted_with_symbol%0A*Total%20Price%3A*%20line_items%5Bi%5D.line_total.formatted_with_symbol%0A-----------------------------" */}
         </div>

@@ -20,34 +20,34 @@ const Product = ({ product, onAddToCart }) => {
   return (
     <Card className={classes.root}>
       <Link to={`view/${product.id}`}>
-      <CardActionArea>
-      <CardMedia
-        className={classes.media}
-        image={product.image.url}
-        title={product.name}
-      />
-      <CardContent>
-        <div className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {product.name}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
-            {"\u20B9"}
-            {product.price.formatted}
-          </Typography>
-        </div>
-        <Typography
-          dangerouslySetInnerHTML={{ __html: product.description }}
-          variant="body2"
-          color="textSecondary"
-          component="p"
-        />
-      </CardContent>
-      </CardActionArea>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={product.image.url}
+            title={product.name}
+          />
+          <CardContent>
+            <div className={classes.cardContent}>
+              <Typography gutterBottom variant="h5" component="h2">
+                {product.name}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="h2">
+                {"\u20B9"}
+                {product.price.formatted}
+              </Typography>
+            </div>
+            <Typography
+              dangerouslySetInnerHTML={{ __html: product.description }}
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            />
+          </CardContent>
+        </CardActionArea>
       </Link>
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-          <AddShoppingCart htmlColor="black"/>
+          <AddShoppingCart htmlColor="black" />
         </IconButton>
       </CardActions>
     </Card>

@@ -120,27 +120,30 @@ const Home = () => {
       >
         {/* <Grid container justifyContent="center" spacing={4}>
          */}
-         <div style={{
-          //paddingTop: "20px",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-         <Typography
-                style={{
-                  align: "center",
-                  fontSize: "28px",
-                  margin: "10px",
-                  color: "textSecondary",
-                }}
-                variant="h1"
-              >
-                <u>Catagories</u>
-              </Typography></div>
+        <div
+          style={{
+            //paddingTop: "20px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            style={{
+              align: "center",
+              fontSize: "28px",
+              margin: "10px",
+              color: "textSecondary",
+            }}
+            variant="h1"
+          >
+            <u>Catagories</u>
+          </Typography>
+        </div>
         <Grid container justifyContent="center">
           {/* Product 1 - Tops  */}
-          
+
           <Grid item justifyContent="center" xs={6} sm={3} md={3} lg={3}>
             <Box
               sx={{
@@ -284,10 +287,10 @@ const Home = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "center",m: 2
+                justifyContent: "center",
+                m: 2,
               }}
             >
-           
               <IconButton component={Link} to="/shop">
                 <Card
                   elevation={5}
@@ -331,10 +334,10 @@ const Home = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "center",m: 2
+                justifyContent: "center",
+                m: 2,
               }}
             >
-         
               <IconButton component={Link} to="/shop">
                 <Card
                   elevation={5}
@@ -391,7 +394,7 @@ const Home = () => {
             }}
           >
             <Typography
-               variant="h4"
+              variant="h4"
               align="center"
               color="textPrimary"
               gutterBottom
