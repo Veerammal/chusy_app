@@ -19,7 +19,8 @@ import logo from "../../assets/chusy-logo.png";
 const Home = () => {
   return (
     <>
-      {/* <Box
+      {/* 
+      <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -119,8 +120,27 @@ const Home = () => {
       >
         {/* <Grid container justifyContent="center" spacing={4}>
          */}
+         <div style={{
+          //paddingTop: "20px",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+         <Typography
+                style={{
+                  align: "center",
+                  fontSize: "28px",
+                  margin: "10px",
+                  color: "textSecondary",
+                }}
+                variant="h1"
+              >
+                <u>Catagories</u>
+              </Typography></div>
         <Grid container justifyContent="center">
           {/* Product 1 - Tops  */}
+          
           <Grid item justifyContent="center" xs={6} sm={3} md={3} lg={3}>
             <Box
               sx={{
@@ -367,11 +387,11 @@ const Home = () => {
             elevation={15}
             style={{
               borderRadius: 35,
+              padding: "20px",
             }}
           >
             <Typography
-              component="h1"
-              variant="h3"
+               variant="h4"
               align="center"
               color="textPrimary"
               gutterBottom

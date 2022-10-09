@@ -7,18 +7,42 @@ import { commerce } from "./lib/commerce";
 
 const App = () => {
   // const [mobileOpen, setMobileOpen] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
 
-  const fetchProducts = async () => {
-    const response = await commerce.products.list();
-    console.log("Products fetched from commercejsapi");
-    console.log(response);
-    const categories = await commerce.categories.list();
+  const fetchProductsPerCategory = async () => {
+    const { data: products } = await commerce.products.list({ limit: 200 });
+    console.log("products are fetched");
+    console.log(products);
+    const { data: categories } = await commerce.categories.list();
+    console.log("categories are fetched");
     console.log(categories);
-    setProducts((response && response.data) || []);
-    console.log(response.data);
+    const productsPerCategory = categories.reduce((acc, category) => {
+      return [
+        ...acc,
+        {
+          ...category,
+          productsData: products.filter((product) =>
+            product.categories.find((cat) => cat.id === category.id)
+          ),
+        },
+      ];
+    }, []);
+    console.log("productsPerCategory are reduced and filtered");
+    console.log(productsPerCategory);
+    setCategories(productsPerCategory);
   };
+
+  // const fetchProducts = async () => {
+  //   const response = await commerce.products.list();
+  //   console.log("Products fetched from commercejsapi");
+  //   console.log(response);
+  //   const categories = await commerce.categories.list();
+  //   console.log(categories);
+  //   setProducts((response && response.data) || []);
+  //   console.log(response.data);
+  // };
 
   const fetchCart = async () => {
     const cartdata = await commerce.cart.retrieve();
@@ -63,8 +87,8 @@ const App = () => {
   // };
 
   useEffect(() => {
-    console.log("Product is going to be fetched");
-    fetchProducts();
+    console.log("Product per Category are going to be fetched");
+    fetchProductsPerCategory();
   }, []);
 
   useEffect(() => {
@@ -87,7 +111,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/shop">
-          <Products products={products} onAddToCart={handleAddToCart} />
+          <Products categories={categories} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/cart">
