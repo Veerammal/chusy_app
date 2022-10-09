@@ -1,22 +1,28 @@
-import React from 'react';
-
+import React from "react";
+import { Typography } from "@material-ui/core";
 const Footer = () => {
   const date = new Date();
   const fullYear = date.getFullYear();
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
-    <footer style={{
-      width: '100%',
-      padding: '10px',
-      height: '90px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: '20px',
-    }}>
-      <p>
-        All &copy; copy rights are reserved to Mangai Matching - (Smashers) {fullYear}
-      </p>
+    <footer
+      style={{
+        width: "100%",
+        padding: "10px",
+        height: "90px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "16px",
+      }}
+    >
+      <Typography variant="h6"
+              align="center"
+              color="textSecondary"
+              paragraph>
+        All &copy; copyrights are reserved to Mangai Matching - (Smashers) &nbsp;
+        {fullYear}
+      </Typography>
     </footer>
   );
 };

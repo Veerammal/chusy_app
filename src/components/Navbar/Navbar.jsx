@@ -69,10 +69,10 @@ const PrimarySearchAppBar = ({ totalItems }) => {
             <img
               src={logo}
               alt="Chusy"
-              height="25px"
+              height="45px"
+              width="85px"
               className={classes.image}
-            />{" "}
-            Chusy
+            />
           </Typography>
           <div className={classes.grow} />
           {location.pathname === "/" && (
