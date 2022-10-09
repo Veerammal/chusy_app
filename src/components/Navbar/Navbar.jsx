@@ -11,7 +11,7 @@ import {
 import { ShoppingCart, Store } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 
-import logo from "../../assets/commerce.png";
+import logo from "../../assets/chusy-logo.png";
 import useStyles from "./styles";
 
 const PrimarySearchAppBar = ({ totalItems }) => {
@@ -61,7 +61,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
         <Toolbar>
           <Typography
             component={Link}
-            to="/home"
+            to="/"
             variant="h6"
             className={classes.title}
             color="inherit"
@@ -75,21 +75,19 @@ const PrimarySearchAppBar = ({ totalItems }) => {
             Chusy
           </Typography>
           <div className={classes.grow} />
-          {location.pathname === "/home" && (
-            <div className={classes.button}>
-            <IconButton
-              component={Link}
-              to="/"
-              aria-label="shopping"
-              color="inherit"
-            >
-              
-                <Store htmlColor="orange"/>
-              
-            </IconButton>
-          </div>
-          )}
           {location.pathname === "/" && (
+            <div className={classes.button}>
+              <IconButton
+                component={Link}
+                to="/shop"
+                aria-label="shopping"
+                color="inherit"
+              >
+                <Store htmlColor="orange" />
+              </IconButton>
+            </div>
+          )}
+          {location.pathname === "/shop" && (
             <div className={classes.button}>
               <IconButton
                 component={Link}
@@ -102,7 +100,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                   overlap="rectangular"
                   color="secondary"
                 >
-                  <ShoppingCart htmlColor="orange"/>
+                  <ShoppingCart htmlColor="orange" />
                 </Badge>
               </IconButton>
             </div>

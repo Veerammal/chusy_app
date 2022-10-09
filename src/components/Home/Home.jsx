@@ -61,7 +61,7 @@ const Home = () => {
         <Grid container justifyContent="center" spacing={4}>
           {/* Product 1 - Tops  */}
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <IconButton component={Link} to="/">
+            <IconButton component={Link} to="/shop">
               <Card
                 elevation={5}
                 style={{
@@ -74,6 +74,7 @@ const Home = () => {
         component="img"
         height="194"
         image="https://raw.githubusercontent.com/Veerammal/chusy_app/main/src/assets/tops.png"
+        
         alt="Tops"
       />
                 <CardContent
@@ -101,7 +102,7 @@ const Home = () => {
           </Grid>
           {/* Product 2 - Chudis */}
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <IconButton component={Link} to="/">
+            <IconButton component={Link} to="/shop">
               <Card
                 elevation={5}
                 style={{
@@ -140,7 +141,7 @@ const Home = () => {
           </Grid>
           {/* Product 3 - Blouse */}
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <IconButton component={Link} to="/">
+            <IconButton component={Link} to="/shop">
               <Card
                 elevation={5}
                 style={{
@@ -177,7 +178,7 @@ const Home = () => {
           </Grid>
           {/* Product 4 - Pants */}
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <IconButton component={Link} to="/">
+            <IconButton component={Link} to="/shop">
               <Card
                 elevation={5}
                 style={{
@@ -214,7 +215,7 @@ const Home = () => {
           </Grid>
           {/* Product 5 - Others */}
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <IconButton component={Link} to="/">
+            <IconButton component={Link} to="/shop">
               <Card
                 elevation={5}
                 style={{
