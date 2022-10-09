@@ -9,20 +9,20 @@ const createMarkup = (text) => {
   return { __html: text };
 };
 
-const View = ({ products }) => {
+const View = ({ onAddToCart }) => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const fetchProduct = async (id) => {
     const response = await commerce.products.retrieve(id);
-    const { name, price, media, quantity, description } = response;
+    const { name, price, image, quantity, description } = response;
     setProduct({
       id,
       name,
       quantity,
       description,
-      src: media.source,
+      src: image.url,
       price: price.formatted_with_symbol,
     });
   };
@@ -77,7 +77,7 @@ const View = ({ products }) => {
         >
           <Typography variant="h2">{product.name}</Typography>
           <Typography
-            variant="p"
+            variant="body1"
             dangerouslySetInnerHTML={createMarkup(product.description)}
           />
           <Typography variant="h3">Price: {product.price}</Typography>
@@ -126,9 +126,8 @@ const View = ({ products }) => {
                   marginRight: "10px",
                 }}
                 onClick={() => {
-                  addProduct(product.id, quantity);
+                  onAddToCart(product.id, quantity);
                 }}
-                s
               >
                 <ShoppingCart /> Add to basket
               </Button>

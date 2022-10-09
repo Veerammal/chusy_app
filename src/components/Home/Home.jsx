@@ -281,11 +281,11 @@ const Home = () => {
               color="textSecondary"
               paragraph
             >
-              <p>
+             
                 Our products are well known for the durability of colors used in
                 yarn. Available in many different ranges and varieties.
-              </p>
-              <p>
+             
+              {/* <p>
                 The demand for our materials is increasing rapidly owing to
                 their new beautiful designs, finest quality and attractive
                 colors. <br />
@@ -296,7 +296,7 @@ const Home = () => {
               <p>
                 We offer you our skillful dresses in all colors and at a fair
                 price per dress.
-              </p>
+              </p> */}
             </Typography>
           </Paper>
         </Box>

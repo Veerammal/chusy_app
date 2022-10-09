@@ -78,7 +78,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
                 backgroundColor: "gold"
               }}
               component={Link}
-              to="/"
+              to="/shop"
             >
               Go to Shopping &nbsp; <ShoppingCart />
             </Button>

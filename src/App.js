@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Navbar, Products, Cart, Home, Footer } from "./components";
+import { Navbar, Products, Cart, Home, Footer, View } from "./components";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
@@ -100,7 +100,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/view/:id">
-          <Products products={products} onAddToCart={handleAddToCart} />
+          <View onAddToCart={handleAddToCart} />
         </Route> 
         
       </Switch>
