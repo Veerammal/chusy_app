@@ -6,3 +6,5 @@ export { default as Footer } from "./Footer/Footer";
 export { default as Spinner } from "./Spinner/Spinner";
 export { default as Home } from "./Home/Home";
 export { default as View } from "./View/View";
+export { default as categories } from "./Home/Categories";
+export { default as About } from "./Home/About";

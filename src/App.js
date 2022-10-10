@@ -6,9 +6,8 @@ import { Navbar, Products, Cart, Home, Footer, View } from "./components";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
-  // const [mobileOpen, setMobileOpen] = useState(false);
   const [categories, setCategories] = useState([]);
-  // const [products, setProducts] = useState([]);
+  
   const [cart, setCart] = useState({});
 
   const fetchProductsPerCategory = async () => {
@@ -34,16 +33,7 @@ const App = () => {
     setCategories(productsPerCategory);
   };
 
-  // const fetchProducts = async () => {
-  //   const response = await commerce.products.list();
-  //   console.log("Products fetched from commercejsapi");
-  //   console.log(response);
-  //   const categories = await commerce.categories.list();
-  //   console.log(categories);
-  //   setProducts((response && response.data) || []);
-  //   console.log(response.data);
-  // };
-
+  
   const fetchCart = async () => {
     const cartdata = await commerce.cart.retrieve();
     // console.log("Fetching our cart from commercejsapi");
@@ -92,18 +82,15 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // console.log("Cart is going to be fetched");
     fetchCart();
   }, [cart]);
 
-  // const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
-
+  
   return (
     <Router>
       <CssBaseline />
       <Navbar
         totalItems={cart ? cart.total_items : ""}
-        // handleDrawerToggle={handleDrawerToggle}
       />
       <Switch>
         <Route exact path="/">

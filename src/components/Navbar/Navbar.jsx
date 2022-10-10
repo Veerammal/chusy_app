@@ -1,115 +1,63 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Badge,
-  // MenuItem,
-  // Menu,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Badge, Box } from "@material-ui/core";
 import { ShoppingCart, Store } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/chusy-logo.png";
-import useStyles from "./styles";
 
-const PrimarySearchAppBar = ({ totalItems }) => {
-  // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const classes = useStyles();
+const Navbar = ({ totalItems }) => {
   const location = useLocation();
-
-  // const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  // const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
-
-  // const mobileMenuId = "primary-search-account-menu-mobile";
-
-  // const renderMobileMenu = (
-  //   <Menu
-  //     anchorEl={mobileMoreAnchorEl}
-  //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
-  //     id={mobileMenuId}
-  //     keepMounted
-  //     transformOrigin={{ vertical: "top", horizontal: "right" }}
-  //     open={isMobileMenuOpen}
-  //     onClose={handleMobileMenuClose}
-  //   >
-  //     <MenuItem>
-  //       <IconButton
-  //         component={Link}
-  //         to="/cart"
-  //         aria-label="Show cart items"
-  //         color="inherit"
-  //       >
-  //         <Badge
-  //           badgeContent={totalItems}
-  //           overlap="rectangular"
-  //           color="secondary"
-  //         >
-  //           <ShoppingCart />
-  //         </Badge>
-  //       </IconButton>
-  //       <p>Cart</p>
-  //     </MenuItem>
-  //   </Menu>
-  // );
 
   return (
     <>
-      <AppBar position="fixed" className={classes.appBar} color="inherit">
+      <AppBar
+        position="fixed"
+        style={{
+          boxShadow: "none",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+          width: "100%",
+          padding: "15px"
+        }}
+        color="inherit"
+      >
         <Toolbar>
-          <Typography
-            component={Link}
-            to="/"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
-            <img
-              src={logo}
-              alt="Chusy"
-              height="45px"
-              width="85px"
-              className={classes.image}
-            />
-          </Typography>
-          <div className={classes.grow} />
+          <Box component={Link} to="/">
+            <img src={logo} alt="Chusy" style={{
+    height: "45px",
+    width: "95px"
+  }} />
+          </Box>
+          <div style={ {
+    flexGrow: 1,
+  }} />
           {location.pathname === "/" && (
-            <div className={classes.button}>
-              <IconButton
-                component={Link}
-                to="/shop"
-                aria-label="shopping"
-                color="inherit"
-              >
-                <Store htmlColor="orange" />
+            <div>
+              <IconButton component={Link} to="/shop" aria-label="shopping">
+                <Store htmlColor="#D750DF" />
               </IconButton>
             </div>
           )}
           {location.pathname === "/shop" && (
-            <div className={classes.button}>
+            <div>
               <IconButton
                 component={Link}
                 to="/cart"
                 aria-label="Show cart items"
-                color="inherit"
               >
                 <Badge
                   badgeContent={totalItems}
                   overlap="rectangular"
-                  color="secondary"
+                  color="primary"
                 >
-                  <ShoppingCart htmlColor="orange" />
+                  <ShoppingCart htmlColor="#D750DF" />
                 </Badge>
               </IconButton>
             </div>
           )}
         </Toolbar>
       </AppBar>
-      {/* {renderMobileMenu} */}
     </>
   );
 };
 
-export default PrimarySearchAppBar;
+export default Navbar;
