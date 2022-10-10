@@ -1,20 +1,14 @@
-import {
-  Typography,
-  Divider,
-  Grid,
-  Container,
-  Button,
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Divider } from "@material-ui/core";
 import Categories from "./Categories";
 import About from "./About";
+import Slider from "./Slider";
 import React from "react";
-import logo from "../../assets/chusy-logo.png";
 const Home = () => {
   return (
     <>
-      
-        <Container style={{
+      {/* "linear-gradient(to bottom right, #FDF8FD, #C5E6F6)" */}
+
+      {/* <Container style={{
           //paddingTop: "20px",
           width: "100%",
           height: "100vh",
@@ -23,7 +17,7 @@ const Home = () => {
           backgroundImage: "linear-gradient(to top left, #FDF, #C5E)",
         }}>
 
-          {/* "linear-gradient(to bottom right, #FDF8FD, #C5E6F6)" */}
+         
 
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
@@ -67,8 +61,10 @@ const Home = () => {
               />
             </Grid>
           </Grid>
-        </Container>
-      
+        </Container> */}
+
+      <Slider />
+
       <Divider />
       {/* -----------Product Category------------ */}
       <Categories />

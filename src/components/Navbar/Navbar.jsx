@@ -16,14 +16,14 @@ const Navbar = ({ totalItems }) => {
           boxShadow: "none",
           borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
           width: "100%",
-          padding: "15px"
+          paddingRight: "8px"
         }}
         color="inherit"
       >
         <Toolbar>
           <Box component={Link} to="/">
             <img src={logo} alt="Chusy" style={{
-    height: "45px",
+    height: "35px",
     width: "95px"
   }} />
           </Box>

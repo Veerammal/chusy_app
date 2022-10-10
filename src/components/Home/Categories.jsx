@@ -98,13 +98,16 @@ const Categories = () => {
             style={{
               margin: 15,
               width: "80%",
-              height: "250px",
+              height: "275px",
               borderRadius: 15,
             }}
           >
-            <CardMedia component="img" image={category.image} alt="Tops" />
+            <CardMedia style={{
+              height:"80%",
+              objectFit: "contain"
+               }} component="img" image={category.image} alt="Tops" />
 
-            <CardContent>
+            <CardContent style={{height: "20%"}}>
               <Typography
                 variant="h5"
                 align="center"
