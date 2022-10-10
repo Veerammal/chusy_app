@@ -4,53 +4,64 @@ import Carousel from "react-material-ui-carousel";
 import { Container, Grid, Typography, Button } from 
 "@material-ui/core";
 import { Link } from "react-router-dom";
-// import logo from "../../assets/chusy-logo.png";
+import slide1 from "../../assets/slide1.png";
+import slide2 from "../../assets/slide2.png";
+import slide3 from "../../assets/slide3.png";
+
 
 const Slider = () => {
   const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/XsdmR2c/1.png",
+      img: slide1,
       title: "DIWALI SALE",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "f5fafd",
+      bg: "#f5fafd",
     },
     {
       id: 2,
-      img: "https://i.ibb.co/DG69bQ4/2.png",
+      img: slide2,
       title: "AUTUMN COLLECTION",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "fcf1ed",
+      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.",
+      bg: "#fcf1ed",
     },
     {
       id: 3,
-      img: "https://i.ibb.co/cXFnLLV/3.png",
+      img: slide3,
       title: "LOUNGEWEAR LOVE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "fbf0f4",
+      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.",
+      bg: "#fbf0f4",
     },
   ];
 
   return (
     <Carousel>
-      {sliderItems.map((item) => (
+    {sliderItems.map((item) => (
+      
       <Container 
       key={item.id}
       style={{
-        //paddingTop: "20px",
+        paddingTop: "30px",
         width: "100%",
-        height: "100vh",
+        height: "98vh",
         display: "flex",
         alignItems: "center",
-        backgroundColor: "#" + item.bg
-       
+        backgroundColor: item.bg
       }}>
 
-{/*        
-//  // backgroundImage: "linear-gradient(to top left, #FDF, #C5E)", */}
-
         <Grid container spacing={4}>
-          <Grid item xs={12} sm={6}>
+          
+          <Grid item 
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "20px",
+            width: "100%",
+            height: "75%"
+          }}  
+          xs={12} sm={6}>
+            
             <Typography
               style={{
                 fontSize: "38px",
@@ -74,17 +85,24 @@ const Slider = () => {
               </Button>
             
           </Grid>
-          <Grid
+          
+          <Grid 
+          item
             style={{
               display: "flex",
               alignItems: "center",
-            }}
-            item
+              justifyContent: "center",
+              marginTop: "20px",
+              width: "100%",
+              height: "75%"
+            }}  
             sm={6}
           >
             <img
               style={{
                 width: "100%",
+                height: "100%",
+                objectFit: "contain",
               }}
               src={item.img}
               alt={item.title}
