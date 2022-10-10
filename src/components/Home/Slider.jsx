@@ -41,9 +41,9 @@ const Slider = () => {
       <Container 
       key={item.id}
       style={{
-        paddingTop: "30px",
+        paddingTop: "35px",
         width: "100%",
-        height: "98vh",
+        height: "96vh",
         display: "flex",
         alignItems: "center",
         backgroundColor: item.bg
@@ -53,10 +53,9 @@ const Slider = () => {
           
           <Grid item 
           style={{
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "20px",
+            marginTop: "50px",
             width: "100%",
             height: "75%"
           }}  
@@ -100,8 +99,6 @@ const Slider = () => {
           >
             <img
               style={{
-                width: "100%",
-                height: "100%",
                 objectFit: "contain",
               }}
               src={item.img}
