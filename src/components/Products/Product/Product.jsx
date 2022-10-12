@@ -10,48 +10,75 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import useStyles from "./styles";
 
 const Product = ({ product, onAddToCart }) => {
-  const classes = useStyles();
-
   const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
-    <Card className={classes.root}>
+    <Card
+      style={{
+        // maxWidth: 345, //original width style
+        width: "100%",
+        height: "450px",
+        // height: "100%",
+        borderRadius: 15,
+        padding: "10px",
+      }}
+    >
       <Link to={`view/${product.id}`}>
         <CardActionArea>
           <CardMedia
-            className={classes.media}
+            style={{
+              height: "250px",
+              //paddingTop: "56.25%", // 16:9
+              objectFit: "contain",
+            }}
+            component="img"
             image={product.image.url}
-            title={product.name}
+            alt={product.name}
           />
           <CardContent>
-            <div className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
+            <div
+              style={{
+                height: "100px",
+              }}
+            >
+              <Typography gutterBottom variant="h6" component="h5">
                 {product.name}
               </Typography>
-              <Typography gutterBottom variant="h5" component="h2">
-                {"\u20B9"}
-                {product.price.formatted}
-              </Typography>
+              
             </div>
-            <Typography
-              dangerouslySetInnerHTML={{ __html: product.description }}
-              variant="body2"
-              color="textSecondary"
-              component="p"
-            />
+           
+            
           </CardContent>
         </CardActionArea>
       </Link>
-      <CardActions disableSpacing className={classes.cardActions}>
+      <CardActions
+        
+        style={{
+          height: "100px",
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "20px",
+        }}
+      >
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-          <AddShoppingCart htmlColor="black" />
+          <AddShoppingCart htmlColor="#D750DF" />
         </IconButton>
+        <Typography gutterBottom variant="h6" component="h5">
+                {"\u20B9" + product.price.formatted}
+        </Typography>
+            
       </CardActions>
     </Card>
   );
 };
 
 export default Product;
+
+//  <Typography
+// dangerouslySetInnerHTML={{ __html: product.description }}
+// variant="body2"
+// color="textSecondary"
+// component="p"
+// />

@@ -48,9 +48,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   };
 
   const renderEmptyCart = () => (
-    // <Typography variant="subtitle1">You have no items in your shopping cart,
-    //   <Link className={classes.link} to="/">start adding some</Link>!
-    // </Typography>
+   
     <div
       style={{
         // paddingTop: "150px",
@@ -156,3 +154,8 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
 };
 
 export default Cart;
+
+
+ // <Typography variant="subtitle1">You have no items in your shopping cart,
+    //   <Link className={classes.link} to="/">start adding some</Link>!
+    // </Typography>
