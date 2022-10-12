@@ -15,8 +15,8 @@ const Products = ({ categories, onAddToCart }) => {
      
 
       <div
-        style={{
-          paddingTop: "70px",
+        style={{ 
+          background: "#E3E3D8",
         }}
       >
         {categories.map((category, index) =>
