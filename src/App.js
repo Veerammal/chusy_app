@@ -3,7 +3,7 @@ import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Navbar, Products, Cart, Footer, View } from "./components";
-import { Home } from "./pages";
+import { Home, Tops, Chudis, Blouses, Pants, Others } from "./pages";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
@@ -52,13 +52,13 @@ const App = () => {
         console.log("Fetched Tops");
         console.log(tops);
       }else if(productsPerCategory[i].slug === "chudis") {
-        setChudis(productsPerCategory[i]);
+        setChudis(productsPerCategory[i].productsData);
       }else if(productsPerCategory[i].slug === "pants") {
-        setPants(productsPerCategory[i]);
+        setPants(productsPerCategory[i].productsData);
       }else if(productsPerCategory[i].slug === "blouses") {
-        setBlouses(productsPerCategory[i]);
+        setBlouses(productsPerCategory[i].productsData);
       }else if(productsPerCategory[i].slug === "others") {
-        setOthers(productsPerCategory[i]);
+        setOthers(productsPerCategory[i].productsData);
       }
     }
     console.log("Tops");
@@ -126,7 +126,7 @@ const App = () => {
 
   useEffect(() => {
     fetchCart();
-  }, [cart]);
+  }, []);
 
   
   return (
@@ -145,23 +145,23 @@ const App = () => {
         </Route>
 
         <Route exact path="/tops">
-          <Products categories={tops} onAddToCart={handleAddToCart} />
+          <Tops categories={tops} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/chudis">
-          <Products categories={chudis} onAddToCart={handleAddToCart} />
+          <Chudis categories={chudis} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/pants">
-          <Products categories={pants} onAddToCart={handleAddToCart} />
+          <Pants categories={pants} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/blouses">
-          <Products categories={blouses} onAddToCart={handleAddToCart} />
+          <Blouses categories={blouses} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/others">
-          <Products categories={others} onAddToCart={handleAddToCart} />
+          <Others categories={others} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/cart">

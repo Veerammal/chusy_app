@@ -20,32 +20,32 @@ const Products = ({ categories, onAddToCart }) => {
           background: "#E3E3D8",
         }}
       >
-        {categories.map((product, index) =>
-          //   <div
-          //     key={category.id}
-          //     style={{
-          //       paddingBottom: "20px",
-          //     }}
-          //   >
-          //     <Container>
-          //       <div style = {{ display: "flex",
-          // justifyContent: "center",
-          // alignItems: "center",}}>
-          //       <Typography
-          //         style={{
-          //           align: "center",
-          //           paddingBottom: "20px",
-          //           paddingTop: "20px",
-          //           fontSize: "28px"
-          //         }}
-          //         variant="h3"
-          //         component="h2"
-          //       >
-          //         {category.name}
-          //       </Typography>
-          //       </div>
+        {categories.map((category, index) =>
+            <div
+              key={category.id}
+              style={{
+                paddingBottom: "20px",
+              }}
+            >
+              <Container>
+                <div style = {{ display: "flex",
+          justifyContent: "center",
+          alignItems: "center",}}>
+                <Typography
+                  style={{
+                    align: "center",
+                    paddingBottom: "20px",
+                    paddingTop: "20px",
+                    fontSize: "28px"
+                  }}
+                  variant="h3"
+                  component="h2"
+                >
+                  {category.name}
+                </Typography>
+                </div>
                 <Grid container justifyContent="center" spacing={4}>
-                  {/* {category.productsData.map((product) => ( */}
+                  {category.productsData.map((product) => (
                     <Grid item key={product.id} xs={6} sm={3} md={3} lg={3} 
                     sx={{
                       display: "flex",
@@ -55,10 +55,10 @@ const Products = ({ categories, onAddToCart }) => {
                     }}>
                       <Product product={product} onAddToCart={onAddToCart} />
                     </Grid>
-                  
+                  ))}
                 </Grid>
-              // </Container>
-            // </div> 
+               </Container>
+             </div> 
           
         )
                   }
