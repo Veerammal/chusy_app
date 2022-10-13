@@ -1,12 +1,12 @@
 import { Divider } from "@material-ui/core";
-import Categories from "./Categories";
-import About from "./About";
-import Slider from "./Slider";
+import Categories from "../components/Home/Categories";
+import About from "../components/Home/About";
+import Slider from "../components/Home/Slider";
 import React from "react";
 const Home = () => {
   return (
     <>
-     {/* Carousel Slider  */}
+     
       <Slider />
 
       <Divider />

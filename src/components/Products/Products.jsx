@@ -3,12 +3,13 @@ import { Grid, Container, Typography } from "@material-ui/core";
 
 import Product from "./Product/Product";
 // import useStyles from './styles';
-import Spinner from "../Spinner/Spinner";
+// import Spinner from "../Spinner/Spinner";
 
 const Products = ({ categories, onAddToCart }) => {
   // const classes = useStyles();
 
-  if (!categories.length) return <Spinner />;
+  console.log(categories);
+  // if (!categories.length) return <Spinner />;
 
   return (
     <>
@@ -19,33 +20,32 @@ const Products = ({ categories, onAddToCart }) => {
           background: "#E3E3D8",
         }}
       >
-        {categories.map((category, index) =>
-          category.productsData.length ? (
-            <div
-              key={category.id}
-              style={{
-                paddingBottom: "20px",
-              }}
-            >
-              <Container>
-                <div style = {{ display: "flex",
-          justifyContent: "center",
-          alignItems: "center",}}>
-                <Typography
-                  style={{
-                    align: "center",
-                    paddingBottom: "20px",
-                    paddingTop: "20px",
-                    fontSize: "28px"
-                  }}
-                  variant="h3"
-                  component="h2"
-                >
-                  {category.name}
-                </Typography>
-                </div>
+        {categories.map((product, index) =>
+          //   <div
+          //     key={category.id}
+          //     style={{
+          //       paddingBottom: "20px",
+          //     }}
+          //   >
+          //     <Container>
+          //       <div style = {{ display: "flex",
+          // justifyContent: "center",
+          // alignItems: "center",}}>
+          //       <Typography
+          //         style={{
+          //           align: "center",
+          //           paddingBottom: "20px",
+          //           paddingTop: "20px",
+          //           fontSize: "28px"
+          //         }}
+          //         variant="h3"
+          //         component="h2"
+          //       >
+          //         {category.name}
+          //       </Typography>
+          //       </div>
                 <Grid container justifyContent="center" spacing={4}>
-                  {category.productsData.map((product) => (
+                  {/* {category.productsData.map((product) => ( */}
                     <Grid item key={product.id} xs={6} sm={3} md={3} lg={3} 
                     sx={{
                       display: "flex",
@@ -55,12 +55,13 @@ const Products = ({ categories, onAddToCart }) => {
                     }}>
                       <Product product={product} onAddToCart={onAddToCart} />
                     </Grid>
-                  ))}
+                  
                 </Grid>
-              </Container>
-            </div>
-          ) : null
-        )}
+              // </Container>
+            // </div> 
+          
+        )
+                  }
       </div>
     </>
   );

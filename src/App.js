@@ -2,21 +2,31 @@ import React, { useState, useEffect } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Navbar, Products, Cart, Home, Footer, View } from "./components";
+import { Navbar, Products, Cart, Footer, View } from "./components";
+import { Home } from "./pages";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
+
+  const [tops, setTops] = useState([]);
+  const [chudis, setChudis] = useState([]);
+  const [blouses, setBlouses] = useState([]);
+  const [pants, setPants] = useState([]);
+  const [others, setOthers] = useState([]);
+
   
   const [cart, setCart] = useState({});
 
   const fetchProductsPerCategory = async () => {
-    const { data: products } = await commerce.products.list({ limit: 200 });
+    // const { data: products } = await commerce.products.list({ limit: 200 });
+    const { data: products } = await commerce.products.list();
     console.log("products are fetched");
     console.log(products);
     const { data: categories } = await commerce.categories.list();
     console.log("categories are fetched");
     console.log(categories);
+    
     const productsPerCategory = categories.reduce((acc, category) => {
       return [
         ...acc,
@@ -31,6 +41,37 @@ const App = () => {
     console.log("productsPerCategory are reduced and filtered");
     console.log(productsPerCategory);
     setCategories(productsPerCategory);
+
+    var categoriesCount = productsPerCategory.length;
+    console.log(categoriesCount);
+
+    for(var i = 0; i < categoriesCount; i++) {
+      if(productsPerCategory[i].slug === "tops") {
+        setTops(productsPerCategory[i].productsData);
+        console.log(productsPerCategory[i].productsData);
+        console.log("Fetched Tops");
+        console.log(tops);
+      }else if(productsPerCategory[i].slug === "chudis") {
+        setChudis(productsPerCategory[i]);
+      }else if(productsPerCategory[i].slug === "pants") {
+        setPants(productsPerCategory[i]);
+      }else if(productsPerCategory[i].slug === "blouses") {
+        setBlouses(productsPerCategory[i]);
+      }else if(productsPerCategory[i].slug === "others") {
+        setOthers(productsPerCategory[i]);
+      }
+    }
+    console.log("Tops");
+    console.log(tops);
+    console.log("Chudis");
+    console.log(chudis);
+    console.log("Blouses");
+    console.log(blouses);
+    console.log("Pants");
+    console.log(pants);
+    console.log("Others");
+    console.log(others);
+
   };
 
   
@@ -81,6 +122,8 @@ const App = () => {
     fetchProductsPerCategory();
   }, []);
 
+  // categories ,tops, chudis, pants, blouses, others
+
   useEffect(() => {
     fetchCart();
   }, [cart]);
@@ -99,6 +142,26 @@ const App = () => {
 
         <Route exact path="/shop">
           <Products categories={categories} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/tops">
+          <Products categories={tops} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/chudis">
+          <Products categories={chudis} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/pants">
+          <Products categories={pants} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/blouses">
+          <Products categories={blouses} onAddToCart={handleAddToCart} />
+        </Route>
+
+        <Route exact path="/others">
+          <Products categories={others} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/cart">
