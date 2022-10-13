@@ -6,7 +6,7 @@ import React from "react";
 const Home = () => {
   return (
     <>
-     
+     {/* Carousel Slider  */}
       <Slider />
 
       <Divider />

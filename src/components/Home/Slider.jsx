@@ -1,13 +1,11 @@
 import React from "react";
 // import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import Carousel from "react-material-ui-carousel";
-import { Container, Grid, Typography, Button } from 
-"@material-ui/core";
+import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import slide1 from "../../assets/slide1.png";
 import slide2 from "../../assets/slide2.png";
 import slide3 from "../../assets/slide3.png";
-
 
 const Slider = () => {
   const sliderItems = [
@@ -36,44 +34,43 @@ const Slider = () => {
 
   return (
     <Carousel>
-    {sliderItems.map((item) => (
-      
-      <Container 
-      key={item.id}
-      style={{
-        paddingTop: "35px",
-        width: "100%",
-        height: "96vh",
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: item.bg
-      }}>
-
-        <Grid container spacing={4}>
-          
-          <Grid item 
+      {sliderItems.map((item) => (
+        <Container
+          key={item.id}
           style={{
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "50px",
+            paddingTop: "57px",
             width: "100%",
-            height: "75%"
-          }}  
-          xs={12} sm={6}>
-            
-            <Typography
+            height: "96vh",
+            display: "flex",
+            alignItems: "center",
+            backgroundColor: item.bg,
+          }}
+        >
+          <Grid container spacing={4} style={{ paddingTop: "60px" }}>
+            <Grid
+              item
               style={{
-                fontSize: "38px",
-                marginBottom: "20px",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "25%",
               }}
-              variant="h1"
+              xs={12}
+              sm={6}
             >
-             {item.desc}
-            </Typography>
-            
+              <Typography
+                style={{
+                  fontSize: "32px",
+                  marginBottom: "20px",
+                }}
+                variant="h1"
+              >
+                {item.desc}
+              </Typography>
+
               <Button
-              component = {Link}
-              to = "/shop"
+                component={Link}
+                to="/shop"
                 style={{
                   textDecoration: "none",
                   color: "#000000",
@@ -82,71 +79,72 @@ const Slider = () => {
               >
                 Shop Now
               </Button>
-            
-          </Grid>
-          
-          <Grid 
-          item
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "20px",
-              width: "100%",
-              height: "75%"
-            }}  
-            sm={6}
-          >
-            <img
+            </Grid>
+
+            <Grid
+              item
               style={{
-                objectFit: "contain",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "20px",
+                width: "100%",
+                height: "75%",
               }}
-              src={item.img}
-              alt={item.title}
-            />
+              xs={12}
+              sm={6}
+            >
+              <img
+                style={{
+                  objectFit: "contain",
+                }}
+                src={item.img}
+                alt={item.title}
+              />
+            </Grid>
           </Grid>
-        </Grid>
-      </Container> 
-
-      // <div
-        //   style={{
-        //     width: "100vw",
-        //     height: "100vh",
-        //     backgroundColor: "#" + item.bg,
-        //   }}
-        //   key={item.id}
-        // >
-        //   {/* Left side Image */}
-        //   <div
-        //     style={{
-        //       paddingTop: "35px",
-              
-        //       flex: "1",
-        //     }}
-        //   >
-        //     <img src={item.img} alt="slider" />
-        //   </div>
-        //   {/* Right side Description */}
-
-        //   <div >
-        //     <h1 style={{ fontSize: "70px" }}>{item.title}</h1>
-        //     <p
-        //       style={{
-        //         margin: "50px 0px",
-        //         fontSize: "20px",
-        //         fontWeight: "500",
-        //         letterSpacing: "3px",
-        //       }}
-        //     >
-        //       {item.desc}
-        //     </p>
-        //   </div>
-        // </div>
-
+        </Container>
       ))}
     </Carousel>
   );
 };
+
+export default Slider;
+
+// <div
+//   style={{
+//     width: "100vw",
+//     height: "100vh",
+//     backgroundColor: "#" + item.bg,
+//   }}
+//   key={item.id}
+// >
+//   {/* Left side Image */}
+//   <div
+//     style={{
+//       paddingTop: "35px",
+
+//       flex: "1",
+//     }}
+//   >
+//     <img src={item.img} alt="slider" />
+//   </div>
+//   {/* Right side Description */}
+
+//   <div >
+//     <h1 style={{ fontSize: "70px" }}>{item.title}</h1>
+//     <p
+//       style={{
+//         margin: "50px 0px",
+//         fontSize: "20px",
+//         fontWeight: "500",
+//         letterSpacing: "3px",
+//       }}
+//     >
+//       {item.desc}
+//     </p>
+//   </div>
+// </div>
 
 // const [slideIndex, setSlideIndex] = useState(0);
 // const handleClick = (direction) => {
@@ -265,5 +263,3 @@ const Slider = () => {
 //     </button>
 //   </div>
 // );
-
-export default Slider;
