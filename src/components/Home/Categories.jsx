@@ -19,26 +19,31 @@ const Categories = () => {
       id: "1",
       name: "Tops",
       image: tops,
+      url: "/tops",
     },
     {
       id: "2",
       name: "Chudis",
       image: chudis,
+      url: "/chudis",
     },
     {
       id: "3",
       name: "Blouses",
       image: blouse,
+      url: "/blouses",
     },
     {
       id: "4",
       name: "Pants",
       image: pants,
+      url: "/pants",
     },
     {
       id: "5",
       name: "Other",
       image: other,
+      url: "/others",
     },
   ];
 
@@ -88,7 +93,7 @@ const Categories = () => {
               p: 10,
             }}
           >
-            <Link to="/shop" style={{ textDecoration: "none" }}>
+            <Link to={category.url} style={{ textDecoration: "none" }}>
               <Card
                 elevation={5}
                 style={{

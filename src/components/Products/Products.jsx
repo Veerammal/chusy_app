@@ -3,34 +3,34 @@ import { Grid, Container, Typography } from "@material-ui/core";
 
 import Product from "./Product/Product";
 // import useStyles from './styles';
-// import Spinner from "../Spinner/Spinner";
+import Spinner from "../Spinner/Spinner";
 
 const Products = ({ categories, onAddToCart }) => {
   // const classes = useStyles();
 
   console.log(categories);
-  // if (!categories.length) return <Spinner />;
+  if (!categories.length) return <Spinner />;
 
   return (
     <>
-     
-
       <div
-        style={{ 
-          background: "#E3E3D8",
+        style={{
+          background: "#f3d9fa",
         }}
       >
-        {categories.map((category, index) =>
-            <div
-              key={category.id}
-              style={{
-                paddingBottom: "20px",
-              }}
-            >
-              <Container>
-                <div style = {{ display: "flex",
-          justifyContent: "center",
-          alignItems: "center",}}>
+        {categories.map((category) =>
+          <div
+            key={category.id}
+            style={{
+              paddingBottom: "20px",
+            }}
+          >
+            <Container>
+              <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
                 <Typography
                   style={{
                     align: "center",
@@ -43,32 +43,32 @@ const Products = ({ categories, onAddToCart }) => {
                 >
                   {category.name}
                 </Typography>
-                </div>
-                <Grid container justifyContent="center" spacing={4}>
-                  {category.productsData.map((product) => (
-                    <Grid item key={product.id} xs={6} sm={3} md={3} lg={3} 
+              </div>
+              <Grid container justifyContent="center" spacing={4}>
+                {category.productsData.map((product) => (
+                  <Grid item key={product.id} xs={6} sm={3} md={3} lg={3}
                     sx={{
                       display: "flex",
                       justifyContent: "center",
                       m: 10,
                       p: 10,
                     }}>
-                      <Product product={product} onAddToCart={onAddToCart} />
-                    </Grid>
-                  ))}
-                </Grid>
-               </Container>
-             </div> 
-          
+                    <Product product={product} onAddToCart={onAddToCart} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </div>
+
         )
-                  }
+        }
       </div>
     </>
   );
 };
 
 export default Products;
- 
+
 
 
 /* <main className={classes.content}>
