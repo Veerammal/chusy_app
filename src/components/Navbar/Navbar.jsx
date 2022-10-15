@@ -16,20 +16,26 @@ const Navbar = ({ totalItems }) => {
           boxShadow: "none",
           borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
           width: "100%",
-          paddingRight: "8px"
+          paddingRight: "8px",
         }}
         color="inherit"
       >
         <Toolbar>
           <Box component={Link} to="/">
-            <img src={logo} alt="Chusy" style={{
-    height: "35px",
-    width: "95px"
-  }} />
+            <img
+              src={logo}
+              alt="Chusy"
+              style={{
+                height: "35px",
+                width: "95px",
+              }}
+            />
           </Box>
-          <div style={ {
-    flexGrow: 1,
-  }} />
+          <div
+            style={{
+              flexGrow: 1,
+            }}
+          />
           {location.pathname === "/" && (
             <div>
               <IconButton component={Link} to="/shop" aria-label="shopping">

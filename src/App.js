@@ -9,15 +9,18 @@ import { commerce } from "./lib/commerce";
 const App = () => {
   const [categories, setCategories] = useState([]);
 
+  // Products State
   const [tops, setTops] = useState([]);
   const [chudis, setChudis] = useState([]);
   const [blouses, setBlouses] = useState([]);
   const [pants, setPants] = useState([]);
   const [others, setOthers] = useState([]);
 
-  
+  // Cart State
   const [cart, setCart] = useState({});
 
+
+  // Products Categorizing
   const fetchProductsPerCategory = async () => {
     // const { data: products } = await commerce.products.list({ limit: 200 });
     const { data: products } = await commerce.products.list();
@@ -42,7 +45,7 @@ const App = () => {
     console.log(productsPerCategory);
     setCategories(productsPerCategory);
 
-    var categoriesCount = productsPerCategory.length;
+    var categoriesCount = categories.length;
     console.log(categoriesCount);
 
     for(var i = 0; i < categoriesCount; i++) {
@@ -61,16 +64,16 @@ const App = () => {
         setOthers(productsPerCategory[i].productsData);
       }
     }
-    console.log("Tops");
-    console.log(tops);
-    console.log("Chudis");
-    console.log(chudis);
-    console.log("Blouses");
-    console.log(blouses);
-    console.log("Pants");
-    console.log(pants);
-    console.log("Others");
-    console.log(others);
+    // console.log("Tops");
+    // console.log(tops);
+    // console.log("Chudis");
+    // console.log(chudis);
+    // console.log("Blouses");
+    // console.log(blouses);
+    // console.log("Pants");
+    // console.log(pants);
+    // console.log("Others");
+    // console.log(others);
 
   };
 
@@ -128,6 +131,16 @@ const App = () => {
     fetchCart();
   }, []);
 
+  // const fetchTops = () => {
+  //   for(var i = 0; i < categories.length; i++) {
+  //     if(categories[i].slug === "tops") {
+  //       setTops(categories[i].productsData);
+  //       console.log(categories[i].productsData);
+  //       console.log("Fetched Tops");
+  //       console.log(tops);
+  //     }
+  //   }
+  // }
   
   return (
     <Router>
@@ -145,23 +158,26 @@ const App = () => {
         </Route>
 
         <Route exact path="/tops">
-          <Tops categories={tops} onAddToCart={handleAddToCart} />
+          {/* {fetchTops()}
+          {console.log("in Router")}
+          {console.log(tops)} */}
+          <Tops tops={tops} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/chudis">
-          <Chudis categories={chudis} onAddToCart={handleAddToCart} />
+          <Chudis chudis={chudis} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/pants">
-          <Pants categories={pants} onAddToCart={handleAddToCart} />
+          <Pants pants={pants} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/blouses">
-          <Blouses categories={blouses} onAddToCart={handleAddToCart} />
+          <Blouses blouses={blouses} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/others">
-          <Others categories={others} onAddToCart={handleAddToCart} />
+          <Others others={others} onAddToCart={handleAddToCart} />
         </Route>
 
         <Route exact path="/cart">

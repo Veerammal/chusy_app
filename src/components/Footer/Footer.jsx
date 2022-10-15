@@ -17,7 +17,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="h6" align="center" color="textSecondary" paragraph>
-        All &copy; copyrights are reserved to Mangai Matching - (Smashers)
+        All &copy; copyrights are reserved to  Chusy
         &nbsp;
         {fullYear}
       </Typography>

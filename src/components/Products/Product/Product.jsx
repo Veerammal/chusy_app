@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import {
 //   Card,
 //   CardMedia,
@@ -11,11 +11,81 @@ import React, { useState } from "react";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
-
-
-
 const Product = ({ product, onAddToCart }) => {
   // const handleAddToCart = () => onAddToCart(product.id, 1);
+
+  return (
+    <Link to={`view/${product.id}`}>
+      <div
+        style={{
+          width: "300px",
+          height: "500px",
+          background: "rgba( 255, 255, 255, 0.25 )",
+          boxShadow: "0 8px 32px 0 rgba( 196, 165, 195, 0.37 )",
+          // backdropFilter: "blur( 4px )",
+          // WebkitBackdropFilter: "blur( 4px )",
+          borderRadius: "10px",
+          border: "1px solid rgba( 255, 255, 255, 0.18 )",
+          // backdropFilter:"blur(16px) saturate(180%)",
+          // WebkitBackdropFilter:"blur(16px) saturate(180%)",
+          // backgroundColor:"rgba(255, 255, 255, 0.75)",
+          // borderRadius:"12px",
+          // border:"1px solid rgba(209, 213, 219, 0.3)",
+          margin: "10px",
+          padding: "10px",
+          // position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            height: "75%",
+            width: "100%",
+            background:
+              "url(" + product.image.url + ") no-repeat center center",
+            WebkitBackgroundSize: "100%",
+            MozBackgroundSize: "100%",
+            OBackgroundSize: "100%",
+            backgroundSize: "100%",
+          }}
+        ></div>
+
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+          <div
+            style={{
+              padding: "15px",
+              float: "left",
+              width: "85%",
+              textDecoration: "none",
+            }}
+          >
+            <h2 style={{
+                fontSize: "22px",
+              }}><p>{product.name} <br/>
+              {product.price.formatted_with_symbol}</p></h2>
+            
+          </div>
+          <div style={{
+  float: "right",
+  padding: "10px", 
+  
+}}>
+            <AddShoppingCart />
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+export default Product;
+
+/*
+
 
   const [isHover1, setIsHover1] = useState(false);
 
@@ -71,39 +141,39 @@ const Product = ({ product, onAddToCart }) => {
   
 
 
-  return (
-    <Link to={`view/${product.id}`}>
-  <div
+<div
       style={{
         width: "300px",
         height: "500px",
-        background: "white",
+        background: isHover1 ? "white" : "blue",
+        border: "2px dotted",
         margin: "auto",
         position: "relative",
         overflow: "hidden",
         borderRadius: "10px 10px 10px 10px",
         boxShadow: "0",
-        transform: isHover1 ?  "scale(1)" : "scale(0.95)",
+        transform: isHover1 ?  "scale(1)" : "scale(0.85)",
         transition: isHover1 ? "5px 20px 30px rgba(0,0,0,0.2)" : "box-shadow 0.5s, transform 0.5s",
       }}
       onMouseEnter={handleMouseEnter1}
-            onMouseLeave={handleMouseLeave1}
+      onMouseLeave={handleMouseLeave1}
     >
       <div style={{ width: "100%", height: "100%" }}>
         <div
           style={{
-            height: "80%",
+            height: "75%",
             width: "100%",
             background:
-              "url(" + product.image.url +") no-repeat center center",
+              "url(" + product.image.url + ") no-repeat center",
             backgroundSize: "100%",
             objectFit: "contain",
           }}
-        ></div>
+        >
+        </div>
         <div
           style={{
-            width: "200%",
-            height: "20%",
+            width: "100%",
+            height: "25%",
             transition: cartClicked ?  "translateX(-50%)" : "transform 0.5s",
           }}
           onClick={handlecartClicked}
@@ -237,14 +307,7 @@ const Product = ({ product, onAddToCart }) => {
 
       </div>
     </div> 
-  </Link>
-  );
-};
-
-export default Product;
-
-/*
-
+  
 
 // HTML
 
@@ -446,8 +509,7 @@ export default Product;
         </div>
       </div>
     </div> */
-  // )
-
+// )
 
 //  <Typography
 // dangerouslySetInnerHTML={{ __html: product.description }}
