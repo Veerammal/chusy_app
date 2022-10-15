@@ -1,5 +1,6 @@
 import React from "react";
 import { CircularProgress } from "@material-ui/core";
+import logo  from "../../assets/chusy-favicon.png";
 
 const Spinner = () => (
   <div
@@ -9,11 +10,11 @@ const Spinner = () => (
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      color: "#c9d1d9",
       fontSize: "24px",
     }}
   >
-    Chusy Loading &nbsp;
+    <img src={logo} alt="logo" width="30px" height="30px" />
+    Loading &nbsp;
     <CircularProgress />
   </div>
 );

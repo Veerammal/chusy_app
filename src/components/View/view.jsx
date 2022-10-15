@@ -1,33 +1,87 @@
-import React, { useRef } from "react";
-import { Grid, Button, Container, Typography } from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
+import React from "react";
+// import { Grid, Button, Container, Typography } from "@material-ui/core";
+// import { ShoppingCart } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useState, useEffect } from "react";
-import Spinner from "../Spinner/Spinner";
+import { Typography } from "@material-ui/core";
+// import Spinner from "../Spinner/Spinner";
 
-import {Link, useParams} from 'react-router-dom'
+// import { Link } from "react-router-dom";
 
+function createMarkup(content) {
+  return {
+  __html:  content    
+  };
+}; 
 
 const View = ({ onAddToCart }) => {
-  const {id} = useParams();
+  
   const [product, setProduct] = useState({});
   // const [quantity, setQuantity] = useState(1);
   // const [loading, setLoading] = useState(true);
 
   const fetchProduct = async (id) => {
     const response = await commerce.products.retrieve(id);
-    const { name, price, image, quantity, description } = response;
-    setProduct({
-      id,
-      name,
-      quantity,
-      description,
-      src: image.url,
-      price: price.formatted_with_symbol,
-    });
+    console.log(response);
+    setProduct(response);
   };
 
-  // useEffect(() => {
+  
+  useEffect(() => {
+    const id = window.location.pathname.split("/");
+    fetchProduct(id[2]);
+  }, []);
+
+  return (
+    <>
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "space-around",
+          background: "grey",
+          flexWrap: "wrap",
+          padding: "50px",
+        }}
+      >
+        <div style={{
+          height: "75%",
+          width: "100%",
+          background:
+            "url(" + product.image.url + ") no-repeat center center",
+        }}></div>
+        <div
+          style={{
+            display: "flex", 
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+          >
+            {product.name}
+            <Typography
+            variant="body1"
+            dangerouslySetInnerHTML={createMarkup(product.description)}
+          />
+          </div>
+
+      </div>
+    </>
+  );
+};
+
+export default View;
+
+/**
+ * 
+ * 
+ * 
+ *
+ * 
+ * 
+ *  // useEffect(() => {
   //   const id = window.location.pathname.split("/");
   //   fetchProduct(id[2]);
   // }, []);
@@ -41,72 +95,18 @@ const View = ({ onAddToCart }) => {
   //   }
   // };
 
-  const imgDiv = useRef();
+  // const imgDiv = useRef();
 
-  const handleMouseMove = e =>{
-    const {left, top, width, height} = e.target.getBoundingClientRect();
-    const x = (e.pageX - left) / width * 100
-    const y = (e.pageY - top) / height * 100
-    imgDiv.current.style.backgroundPosition = `${x}% ${y}%`
-}
+//   const handleMouseMove = e =>{
+//     const {left, top, width, height} = e.target.getBoundingClientRect();
+//     const x = (e.pageX - left) / width * 100
+//     const y = (e.pageY - top) / height * 100
+//     imgDiv.current.style.backgroundPosition = `${x}% ${y}%`
+// }
 
 
-  return (
-    <>
-      <div style={ {
-    width: "100%", 
-    display: "flex", 
-    justifyContent: "space-around", 
-    flexWrap: "wrap", 
-    padding: "50px"
-  }}>
-        <div
-          className="img-container"
-          onMouseMove={handleMouseMove}
-          style={{ backgroundImage: `url(${product.src})`,
-          
-            maxWidth: "400px", 
-            width: "100%", 
-            margin: "20px", 
-            height: "450px", 
-            backgroundPosition: "center", 
-            backgroundSize: "cover", 
-            backgroundRepeat: "no-repeat",
-           }}
-          ref={imgDiv}
-          onMouseLeave={() =>
-            (imgDiv.current.style.backgroundPosition = `center`)
-          }
-        />
 
-        <div className="box-details">
-          <h2 title={product.name}>{product.name}</h2>
-          <h3>${product.price}</h3>
-          {/* <Colors colors={product.colors} /> */}
-          {/* <Sizes sizes={product.sizes} /> */}
-          <p>{product.description}</p>
-          {/* <p>{product.content}</p> */}
-          {/* <DetailsThumb images={product.images} setIndex={setIndex} /> */}
-          <Link
-            to="/cart"
-            className="cart"
-            onClick={() => onAddToCart()}
-          >
-            Add to cart <ShoppingCart/>
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default View;
-
-/**
- * 
- * 
- * 
- *  <>
+<>
     <div style={{
     display: "flex", 
     justifyContent: "space-around", 
