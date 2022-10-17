@@ -40,7 +40,7 @@ const Product = ({ product, onAddToCart }) => {
       <Link to={`view/${product.id}`}>
         <div
           style={{
-            height: "75%",
+            height: "70%",
             width: "100%",
             background:
               "url(" + product.image.url + ") no-repeat center center",
@@ -68,7 +68,7 @@ const Product = ({ product, onAddToCart }) => {
         >
           <h2
             style={{
-              fontSize: "22px",
+              fontSize: "20px",
             }}
           >
             <p>

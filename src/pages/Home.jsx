@@ -8,7 +8,6 @@ import React from "react";
 const Home = () => {
   return (
     <>
-     
       <Slider />
       <Divider />
       {/* -----------Product Category------------ */}

@@ -1,5 +1,4 @@
 import React from "react";
-// import { Grid, Button, Container, Typography } from "@material-ui/core";
 import { commerce } from "../../lib/commerce";
 import { useState, useEffect } from "react";
 import { Typography, Button, Grid, IconButton } from "@material-ui/core";
@@ -24,30 +23,50 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  // const [loading, setLoading] = useState(true);
-
+  const [vgrpId, setVgrpId] = useState("");
+  const [optnId, setOptnId] = useState("");
   const history = useHistory();
 
-  const handleAddToCart = () => onAddToCart(product.id, quantity);
+  const handleAddToCart = () => {
+    if(vgrpId === "" || optnId === "")  onAddToCart(product.id, quantity)
+    else onAddToVariantCart();
+  };
 
-  const handleGetVarient = async (index) => {
-    if (index !== 0) {
-      console.log("printing some item here...");
-      const vgrpId = product.variant_groups[0].id;
-      const optnId = product.variant_groups[0].options[index-1].id;
-      const item = await commerce.cart.add(product.id, quantity, { [vgrpId]: optnId });
+  const onAddToVariantCart = async () => {
+    const item = await commerce.cart.add(product.id, quantity, {
+        [vgrpId]: optnId,
+      });
       console.log(item);
-      console.log("item printed to console successfully");
-    }
+  }
+
+  const handleGetVarient = (index) => {
     
+      setProduct({
+        ...product,
+        image: {
+          url: product.assets[index].url,
+        },
+      });
+      if (index !== 0) {
+      // console.log("printing some item here...");
+      // const vgrpId = product.variant_groups[0].id;
+      setVgrpId(product.variant_groups[0].id);
+      // const optnId = product.variant_groups[0].options[index - 1].id;
+      setOptnId(product.variant_groups[0].options[index - 1].id);
+      // const item = await commerce.cart.add(product.id, quantity, {
+      //   [vgrpId]: optnId,
+      // });
+      // console.log(item);
+      // console.log("item printed to console successfully");
     }
+  };
 
   const fetchProduct = async (id) => {
     const response = await commerce.products.retrieve(id);
     console.log("inside view fetching product");
     console.log(response);
     setProduct(response);
-  }
+  };
 
   useEffect(() => {
     const id = window.location.pathname.split("/");
@@ -61,9 +80,9 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
     <>
       <div
         style={{
-          paddingTop: "70px",
           background: "#f3d9fa",
-          width: "100%",
+          padding: "20px",
+          paddingTop: "70px",
           overflow: "hidden",
         }}
       >
@@ -72,13 +91,11 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
         </IconButton>
         <Grid
           container
-          spacing={2}
-          justifyContent="center"
+          // justifyContent="center"
           style={{
-            width: "100%",
-            height: "100%",
+            // width: "100%",
+            // height: "100%",
             padding: "15px",
-            margin: "20px",
             background: "rgba( 255, 255, 255, 0.25 )",
             boxShadow: "0 8px 32px 0 rgba( 196, 165, 195, 0.37 )",
             // backdropFilter: "blur( 4px )",
@@ -90,8 +107,8 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
             // backgroundColor:"rgba(255, 255, 255, 0.75)",
             // borderRadius:"12px",
             // border:"1px solid rgba(209, 213, 219, 0.3)",
-            position: "relative",
-            overflow: "hidden",
+            // position: "relative",
+            // overflow: "hidden",
             zIndex: "5",
           }}
         >
@@ -105,7 +122,7 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              padding: "20px",
+              // padding: "20px",
             }}
           >
             <img
@@ -120,18 +137,7 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
           </Grid>
 
           {/* Right side */}
-          <Grid
-            item
-            xs={12}
-            md={6}
-            lg={6}
-            xl={6}
-            style={{
-              padding: "25px",
-              width: "100%",
-              height: "100%",
-            }}
-          >
+          <Grid item xs={12} md={6} lg={6} xl={6}>
             <Typography
               variant="h3"
               dangerouslySetInnerHTML={createMarkup(product.name)}
@@ -194,34 +200,35 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
             ) : null}
             <div
               style={{
-                height: "100px",
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
                 justifyContent: "center",
                 alignItems: "center",
-                paddingTop: "20px",
               }}
             >
               {product.assets.length > 1
                 ? product.assets.map((asset, index) => {
                     return (
-                      <div
-                        style={{
-                          padding: "5px",
-                          margin: "10px",
-                        }}
-                      >
-                        <IconButton index={index} onClick={() => handleGetVarient(index)} >
-                        <img
-                          src={asset.url}
-                          alt="asset"
-                          height="100px"
-                          width="100px"
-                        />
-                        <Typography variant="h5">{
-                        index !== 0 ? product.variant_groups[0].options[index-1].name : null
-                        }</Typography>
+                      <div>
+                        <IconButton
+                          index={index}
+                          onClick={() => handleGetVarient(index)}
+                        >
+                          
+                            <img
+                              src={asset.url}
+                              alt="asset"
+                              height="50px"
+                              width="50px"
+                            />
+                          
+                          <Typography variant="h5">
+                            {index !== 0
+                              ? product.variant_groups[0].options[index - 1]
+                                  .name
+                              : null}
+                          </Typography>
                         </IconButton>
                       </div>
                     );
@@ -233,7 +240,7 @@ const View = ({ onAddToCart, onUpdateCartQty, onRemoveFromCart }) => {
       </div>
     </>
   );
-} ;             
+};
 export default View;
 
 /*
