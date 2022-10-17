@@ -1,13 +1,16 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 
 import Product from "../components/Products/Product/Product";
 // import useStyles from './styles';
 import Spinner from "../components/Spinner/Spinner";
+import { ArrowBack } from "@material-ui/icons";
+import { useHistory } from "react-router";
 
 const Others = ({ blouses, onAddToCart }) => {
   // const classes = useStyles();
   
+  const history = useHistory();
 
   console.log(blouses.length);
   if (!blouses.length) return <Spinner />;
@@ -22,6 +25,9 @@ const Others = ({ blouses, onAddToCart }) => {
         width: "100%",
       }}
     >
+      <IconButton onClick={() => history.goBack()}>
+          <ArrowBack htmlColor="#D750DF" />
+        </IconButton>
       
               <Grid container justifyContent="center" spacing={4}>
                 {blouses.map((blouse) => (

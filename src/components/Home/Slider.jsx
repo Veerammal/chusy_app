@@ -34,29 +34,39 @@ const Slider = () => {
 
   return (
     <Carousel>
+      
       {sliderItems.map((item) => (
-        <Container
+      
+      <Container
           key={item.id}
           style={{
-            paddingTop: "57px",
             width: "100%",
-            height: "96vh",
-            display: "flex",
-            alignItems: "center",
+            height: "100%",
             backgroundColor: item.bg,
+            paddingTop: "70px",
           }}
         >
-          <Grid container spacing={4} style={{ paddingTop: "60px" }}>
+          <Grid 
+          container
+          spacing={4}
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          >
+            {/* Left side */}
             <Grid
               item
               style={{
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
-                height: "25%",
+                height: "100%",
               }}
               xs={12}
               sm={6}
+              md={6}
+              lg={6}
             >
               <Typography
                 style={{
@@ -80,19 +90,20 @@ const Slider = () => {
                 Shop Now
               </Button>
             </Grid>
-
+          {/*  Right side  */}
             <Grid
               item
               style={{
-                display: "flex",
+                // display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginTop: "20px",
                 width: "100%",
-                height: "75%",
+                height: "100%",
               }}
               xs={12}
               sm={6}
+              md={6}
+              lg={6}
             >
               <img
                 style={{

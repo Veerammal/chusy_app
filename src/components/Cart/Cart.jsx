@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Container, Typography, Button, Grid } from "@material-ui/core";
-import { ShoppingBasket, ShoppingCart } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Container, Typography, Button, Grid, IconButton } from "@material-ui/core";
+import { ShoppingBasket, ShoppingCart, ArrowBack } from "@material-ui/icons";
+import { Link, useHistory } from "react-router-dom";
 
 import CartItem from "./CartItem/CartItem";
-import useStyles from "./styles";
+
 import Spinner from "../Spinner/Spinner";
 
 const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
-  const [orderUrl, setOrderUrl] = useState("");
 
-  const classes = useStyles();
+  const [orderUrl, setOrderUrl] = useState("");
+  
+  const history = useHistory();
 
   const handleEmptyCart = () => onEmptyCart();
 
@@ -56,8 +57,14 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
         height: "96vh",
         display: "flex",
         alignItems: "center",
+        background: "#f3d9fa",
+        overflow: "hidden",
       }}
     >
+      <IconButton onClick={() => history.goBack()}>
+          <ArrowBack htmlColor="#D750DF" />
+        </IconButton>
+
       <Container>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
@@ -94,9 +101,27 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
 
   const renderCart = () => (
     <>
-      <Grid container spacing={3}>
+
+<div style={{
+paddingTop: "70px",
+background: "#f3d9fa",
+width: "100%",
+overflow: "hidden",
+}}>
+<IconButton onClick={() => history.goBack()}>
+          <ArrowBack htmlColor="#D750DF" />
+        </IconButton>
+    
+      <Grid
+      container 
+      spacing={4} 
+      justifyContent="center"
+      >
         {cart.line_items.map((lineItem) => (
-          <Grid item xs={12} sm={4} key={lineItem.id}>
+          <Grid item xs={12}
+          sm={6}
+          md={3}
+          lg={3} key={lineItem.id}>
             <CartItem
               item={lineItem}
               onUpdateCartQty={onUpdateCartQty}
@@ -105,13 +130,21 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
           </Grid>
         ))}
       </Grid>
-      <div className={classes.cardDetails}>
+      <div style={{
+    display: "flex",
+    marginTop: "10%",
+    width: "100%",
+    justifyContent: "space-between",
+  }}>
         <Typography variant="h4">
           Subtotal: {cart.subtotal.formatted_with_symbol}
         </Typography>
         <div>
           <Button
-            className={classes.emptyButton}
+            style={{
+            width: "150px",
+            margin: "10px",
+          }}
             size="large"
             type="button"
             variant="contained"
@@ -122,7 +155,9 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
           </Button>
           {/* <Button class1Name={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button> */}
           <Button
-            className={classes.checkoutButton}
+            style={{
+            minWidth: "150px",
+          }}
             href={"http://Wa.me/916369119553?text=" + orderUrl}
             size="large"
             type="button"
@@ -130,26 +165,25 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
             color="primary"
             onClick={showCartDetails}
           >
-            Place Order <ShoppingBasket />
+            Place Order &nbsp; <ShoppingBasket />
           </Button>
           {/* href="http://Wa.me/919360234777?text=*CHUSY%20ONLINE%20ORDER*%0A____________________________%0A%0A%0A*Total%20Order%3A*%20total_items%0A*Products%20Count%3A*%20total_unique_items%0A*Total%20Amount%3A*%20subtotal.formatted_with_symbol%0A%0A-----------------------------%0A*Product%20Name%3A*%20line_items%5Bi%5D.name%0A*Product%20Image%20URL%3A*%20line_items%5Bi%5D.image.url%0A*Product%20Quantity%3A*%20line_items%5Bi%5D.quantity%0A*Product%20Price%3A*%20line_items%5Bi%5D.price.formatted_with_symbol%0A*Total%20Price%3A*%20line_items%5Bi%5D.line_total.formatted_with_symbol%0A-----------------------------" */}
         </div>
+      </div>
       </div>
     </>
   );
 
   return (
-    <Container>
-      <div className={classes.toolbar} />
-      {/* <Typography className={classes.title} variant="h3" gutterBottom>
-        Your Shopping Cart
-      </Typography> */}
+    <>
+      
+      
       {cart
         ? (cart.line_items ? !cart.line_items.length : true)
           ? renderEmptyCart()
           : renderCart()
         : renderLoading()}
-    </Container>
+    </>
   );
 };
 
@@ -159,3 +193,7 @@ export default Cart;
  // <Typography variant="subtitle1">You have no items in your shopping cart,
     //   <Link className={classes.link} to="/">start adding some</Link>!
     // </Typography>
+
+    /* <Typography className={classes.title} variant="h3" gutterBottom>
+        Your Shopping Cart
+      </Typography> */

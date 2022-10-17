@@ -3,12 +3,13 @@ import Categories from "../components/Home/Categories";
 import About from "../components/Home/About";
 import Slider from "../components/Home/Slider";
 import React from "react";
+
+
 const Home = () => {
   return (
     <>
      
       <Slider />
-
       <Divider />
       {/* -----------Product Category------------ */}
       <Categories />

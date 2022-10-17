@@ -8,12 +8,15 @@ const Footer = () => {
     <footer
       style={{
         width: "100%",
-        padding: "10px",
         height: "90px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         fontSize: "16px",
+        position: "relative",
+left: "0",
+bottom:"0",
+right:"0",
       }}
     >
       <Typography variant="h6" align="center" color="textSecondary" paragraph>

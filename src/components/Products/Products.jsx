@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Divider, Grid, Typography } from "@material-ui/core";
 
 import Product from "./Product/Product";
 // import useStyles from './styles';
@@ -9,23 +9,26 @@ const Products = ({ categories, onAddToCart }) => {
   // const classes = useStyles();
 
   console.log(categories);
-  if (!categories.length) return <Spinner />;
+  if (!categories.length) 
+    return <Spinner />;
 
   return (
     <>
       <div
         style={{
-          overflow: "hidden",
           paddingTop: "70px",
           background: "#f3d9fa",
           width: "100%",
+          overflow: "hidden",
         }}
       >
+
         {categories.map((category) => (
           <div
             key={category.id}
             style={{
               paddingBottom: "20px",
+              width: "100%",
             }}
           >
 
@@ -44,19 +47,25 @@ const Products = ({ categories, onAddToCart }) => {
                   paddingTop: "20px",
                   fontSize: "28px",
                 }}
-                variant="h3"
-                component="h2"
               >
                 {category.name}
               </Typography>
             </div>
           {/* Category name ends */}
-            <Grid container justifyContent="center" spacing={4}>
+
+            <Grid 
+            container 
+            justifyContent="center" 
+            spacing={1}
+            style={{
+              width: '100%',
+              overflow: "hidden",
+            }}>
               {category.productsData.map((product) => (
                 <Grid
                   item
                   key={product.id}
-                  xs={12}
+                  xs={6}
                   sm={6}
                   md={3}
                   lg={3}
@@ -71,7 +80,8 @@ const Products = ({ categories, onAddToCart }) => {
                 </Grid>
               ))}
             </Grid>
-          </div>
+            <Divider/>
+          </div>          
         ))}
       </div>
     </>

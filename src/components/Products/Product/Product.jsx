@@ -8,35 +8,36 @@ import React from "react";
 //   IconButton,
 //   CardActionArea,
 // } from "@material-ui/core";
+import{IconButton} from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 const Product = ({ product, onAddToCart }) => {
-  // const handleAddToCart = () => onAddToCart(product.id, 1);
+  const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
-    <Link to={`view/${product.id}`}>
-      <div
-        style={{
-          width: "300px",
-          height: "500px",
-          background: "rgba( 255, 255, 255, 0.25 )",
-          boxShadow: "0 8px 32px 0 rgba( 196, 165, 195, 0.37 )",
-          // backdropFilter: "blur( 4px )",
-          // WebkitBackdropFilter: "blur( 4px )",
-          borderRadius: "10px",
-          border: "1px solid rgba( 255, 255, 255, 0.18 )",
-          // backdropFilter:"blur(16px) saturate(180%)",
-          // WebkitBackdropFilter:"blur(16px) saturate(180%)",
-          // backgroundColor:"rgba(255, 255, 255, 0.75)",
-          // borderRadius:"12px",
-          // border:"1px solid rgba(209, 213, 219, 0.3)",
-          margin: "10px",
-          padding: "10px",
-          // position: "relative",
-          overflow: "hidden",
-        }}
-      >
+    <div
+      style={{
+        width: "95%",
+        height: "400px",
+        background: "rgba( 255, 255, 255, 0.25 )",
+        boxShadow: "0 8px 32px 0 rgba( 196, 165, 195, 0.37 )",
+        // backdropFilter: "blur( 4px )",
+        // WebkitBackdropFilter: "blur( 4px )",
+        borderRadius: "15px",
+        border: "1px solid rgba( 255, 255, 255, 0.18 )",
+        // backdropFilter:"blur(16px) saturate(180%)",
+        // WebkitBackdropFilter:"blur(16px) saturate(180%)",
+        // backgroundColor:"rgba(255, 255, 255, 0.75)",
+        // borderRadius:"12px",
+        // border:"1px solid rgba(209, 213, 219, 0.3)",
+        margin: "10px",
+        padding: "10px",
+        // position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <Link to={`view/${product.id}`}>
         <div
           style={{
             height: "75%",
@@ -49,36 +50,46 @@ const Product = ({ product, onAddToCart }) => {
             backgroundSize: "100%",
           }}
         ></div>
-
-        <div style={{
+      </Link>
+      <div
+        style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}>
-          <div
+        }}
+      >
+        <div
+          style={{
+            padding: "15px",
+            float: "left",
+            width: "85%",
+            textDecoration: "none",
+          }}
+        >
+          <h2
             style={{
-              padding: "15px",
-              float: "left",
-              width: "85%",
-              textDecoration: "none",
+              fontSize: "22px",
             }}
           >
-            <h2 style={{
-                fontSize: "22px",
-              }}><p>{product.name} <br/>
-              {product.price.formatted_with_symbol}</p></h2>
-            
-          </div>
-          <div style={{
-  float: "right",
-  padding: "10px", 
-  
-}}>
-            <AddShoppingCart />
-          </div>
+            <p>
+              {product.name} <br />
+              {product.price.formatted_with_symbol}
+            </p>
+          </h2>
+        </div>
+        <div
+          style={{
+            float: "right",
+            padding: "10px",
+          }}
+        
+        >
+          <IconButton onClick={handleAddToCart}>
+            <AddShoppingCart  htmlColor="#D750DF" />
+          </IconButton>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

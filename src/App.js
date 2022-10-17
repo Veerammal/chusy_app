@@ -19,7 +19,6 @@ const App = () => {
   // Cart State
   const [cart, setCart] = useState({});
 
-
   // Products Categorizing
   const fetchProductsPerCategory = async () => {
     // const { data: products } = await commerce.products.list({ limit: 200 });
@@ -29,7 +28,7 @@ const App = () => {
     const { data: categories } = await commerce.categories.list();
     console.log("categories are fetched");
     console.log(categories);
-    
+
     const productsPerCategory = categories.reduce((acc, category) => {
       return [
         ...acc,
@@ -48,42 +47,31 @@ const App = () => {
     var categoriesCount = categories.length;
     console.log(categoriesCount);
 
-    for(var i = 0; i < categoriesCount; i++) {
-      if(productsPerCategory[i].slug === "tops") {
+    for (var i = 0; i < categoriesCount; i++) {
+      if (productsPerCategory[i].slug === "tops") {
         setTops(productsPerCategory[i].productsData);
         console.log(productsPerCategory[i].productsData);
         console.log("Fetched Tops");
         console.log(tops);
-      }else if(productsPerCategory[i].slug === "chudis") {
+      } else if (productsPerCategory[i].slug === "chudis") {
         setChudis(productsPerCategory[i].productsData);
-      }else if(productsPerCategory[i].slug === "pants") {
+      } else if (productsPerCategory[i].slug === "pants") {
         setPants(productsPerCategory[i].productsData);
-      }else if(productsPerCategory[i].slug === "blouses") {
+      } else if (productsPerCategory[i].slug === "blouses") {
         setBlouses(productsPerCategory[i].productsData);
-      }else if(productsPerCategory[i].slug === "others") {
+      } else if (productsPerCategory[i].slug === "others") {
         setOthers(productsPerCategory[i].productsData);
       }
     }
-    // console.log("Tops");
-    // console.log(tops);
-    // console.log("Chudis");
-    // console.log(chudis);
-    // console.log("Blouses");
-    // console.log(blouses);
-    // console.log("Pants");
-    // console.log(pants);
-    // console.log("Others");
-    // console.log(others);
-
   };
 
-  
   const fetchCart = async () => {
     const cartdata = await commerce.cart.retrieve();
     // console.log("Fetching our cart from commercejsapi");
     // console.log(cartdata);
     setCart(cartdata);
   };
+
 
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
@@ -125,29 +113,15 @@ const App = () => {
     fetchProductsPerCategory();
   }, []);
 
-  // categories ,tops, chudis, pants, blouses, others
 
   useEffect(() => {
     fetchCart();
-  }, []);
+  }, [cart]);
 
-  // const fetchTops = () => {
-  //   for(var i = 0; i < categories.length; i++) {
-  //     if(categories[i].slug === "tops") {
-  //       setTops(categories[i].productsData);
-  //       console.log(categories[i].productsData);
-  //       console.log("Fetched Tops");
-  //       console.log(tops);
-  //     }
-  //   }
-  // }
-  
   return (
     <Router>
       <CssBaseline />
-      <Navbar
-        totalItems={cart ? cart.total_items : ""}
-      />
+      <Navbar totalItems={cart ? cart.total_items : ""} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -158,9 +132,6 @@ const App = () => {
         </Route>
 
         <Route exact path="/tops">
-          {/* {fetchTops()}
-          {console.log("in Router")}
-          {console.log(tops)} */}
           <Tops tops={tops} onAddToCart={handleAddToCart} />
         </Route>
 
@@ -190,7 +161,10 @@ const App = () => {
         </Route>
 
         <Route exact path="/view/:id">
-          <View onAddToCart={handleAddToCart} />
+          <View 
+          onUpdateCartQty={handleUpdateCartQty}
+          onRemoveFromCart={handleRemoveFromCart}
+          onAddToCart={handleAddToCart} />
         </Route>
       </Switch>
       <Footer />

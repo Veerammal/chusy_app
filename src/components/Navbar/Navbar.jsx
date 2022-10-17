@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, IconButton, Badge, Box } from "@material-ui/core";
-import { ShoppingCart, Store } from "@material-ui/icons";
+import { Home, ShoppingCart, Store } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/chusy-logo.png";
@@ -13,10 +13,10 @@ const Navbar = ({ totalItems }) => {
       <AppBar
         position="fixed"
         style={{
-          boxShadow: "none",
-          borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.10)",
           width: "100%",
-          paddingRight: "8px",
+          overflow: "hidden",
+          paddingRight: "4px",
         }}
         color="inherit"
       >
@@ -43,8 +43,15 @@ const Navbar = ({ totalItems }) => {
               </IconButton>
             </div>
           )}
-          {location.pathname === "/shop" && (
+          {location.pathname !== "/" && (
             <div>
+              <IconButton
+                component={Link}
+                to="/"
+                aria-label="Home"
+                >
+                  <Home htmlColor="#D750DF"/>
+                </IconButton>
               <IconButton
                 component={Link}
                 to="/cart"
@@ -58,6 +65,7 @@ const Navbar = ({ totalItems }) => {
                   <ShoppingCart htmlColor="#D750DF" />
                 </Badge>
               </IconButton>
+              
             </div>
           )}
         </Toolbar>
