@@ -38,18 +38,13 @@ const Product = ({ product, onAddToCart }) => {
       }}
     >
       <Link to={`view/${product.id}`}>
-        <div
+        <img src={product.image.url}
           style={{
             height: "70%",
             width: "100%",
-            background:
-              "url(" + product.image.url + ") no-repeat center center",
-            WebkitBackgroundSize: "100%",
-            MozBackgroundSize: "100%",
-            OBackgroundSize: "100%",
-            backgroundSize: "100%",
+            objectFit: "contain",
           }}
-        ></div>
+        />
       </Link>
       <div
         style={{

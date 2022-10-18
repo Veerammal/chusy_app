@@ -5,7 +5,7 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
+  // CardMedia,
 } from "@material-ui/core";
 
 
@@ -20,8 +20,8 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   return (
     <Card style={{
 
-      width: "95%",
-      height: "100%",
+      // width: "95%",
+      // height: "100%",
       background: "rgba( 255, 255, 255, 0.25 )",
       boxShadow: "0 8px 32px 0 rgba( 196, 165, 195, 0.37 )",
       // backdropFilter: "blur( 4px )",
@@ -38,11 +38,11 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
       // position: "relative",
       overflow: "hidden",
     }}>
-      <CardMedia
-        image={item.image.url}
+      <img src={item.image.url}
         alt={item.name}
         style={{
-          height: "280px",
+          alignItems: "center",
+          height: "350px",
           width: "100%",
           objectFit: "contain",
         }}

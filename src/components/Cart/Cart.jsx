@@ -114,11 +114,12 @@ overflow: "hidden",
     
       <Grid
       container 
-      spacing={4} 
+      spacing={2} 
       justifyContent="center"
       >
         {cart.line_items.map((lineItem) => (
-          <Grid item xs={12}
+          <Grid item
+          xs={12}
           sm={6}
           md={3}
           lg={3} key={lineItem.id}>

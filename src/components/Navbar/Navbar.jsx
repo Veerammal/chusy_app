@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Badge, Box } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Badge, Box, Typography } from "@material-ui/core";
 import { Home, ShoppingCart, Store } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,6 +21,7 @@ const Navbar = ({ totalItems }) => {
         color="inherit"
       >
         <Toolbar>
+          { location.pathname === "/" && (
           <Box component={Link} to="/">
             <img
               src={logo}
@@ -30,7 +31,20 @@ const Navbar = ({ totalItems }) => {
                 width: "95px",
               }}
             />
-          </Box>
+          </Box>) 
+        }
+        { location.pathname === "/cart" && (
+          <Box>
+            <Typography variant="h5"
+              style={{
+                height: "35px",
+                width: "95px",
+                color: "#D750DF",
+              }}
+            >Cart</Typography>
+          </Box>) 
+        }
+
           <div
             style={{
               flexGrow: 1,
